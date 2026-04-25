@@ -49,15 +49,16 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
     
     // Set up toolbar properties: allow customization, give a default display mode
     // and remember state in user defaults 
-    [toolbar setAllowsUserCustomization: YES];
-    [toolbar setAutosavesConfiguration: YES];
+    [toolbar setAllowsUserCustomization: NO];
+    [toolbar setAutosavesConfiguration: NO];
     [toolbar setDisplayMode: NSToolbarDisplayModeIconAndLabel];
-    
+
     // We are the delegate
     [toolbar setDelegate: self];
-    
-    // Attach the toolbar to the document window 
+
+    // Attach the toolbar to the document window
     [[self window] setToolbar: toolbar];
+    [[self window] setToolbarStyle: NSWindowToolbarStylePreference];
 			
 	// Select the first view
 	
@@ -75,66 +76,45 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
     NSToolbarItem *toolbarItem = [[[NSToolbarItem alloc] initWithItemIdentifier: itemIdent] autorelease];
 
     if ([itemIdent isEqual: GeneralItemIdentifier]) {
-		// Set up the standard properties 
-		[toolbarItem setLabel: NSLocalizedString(@"PTBGeneral", nil)];
-		[toolbarItem setPaletteLabel: NSLocalizedString(@"PTBGeneral", nil)];
-		
-		// Use a custom view 
-		[toolbarItem setImage:[NSImage imageNamed:@"tb_general"]];
-		// Action
+		NSString* label = NSLocalizedString(@"PTBGeneral", nil);
+		[toolbarItem setLabel:label];
+		[toolbarItem setPaletteLabel:label];
+		[toolbarItem setImage:[NSImage imageWithSystemSymbolName:@"gearshape" accessibilityDescription:label]];
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction:@selector(selectGeneralView)];
     } else if ([itemIdent isEqual: ViewsItemIdentifier]) {
-		// Set up the standard properties 
-		[toolbarItem setLabel: NSLocalizedString(@"PTBViews", nil)];
-		[toolbarItem setPaletteLabel: NSLocalizedString(@"PTBViews", nil)];
-		
-		// Use a custom view 
-		[toolbarItem setImage:[NSImage imageNamed:@"tb_views"]];
-
-		// Action
+		NSString* label = NSLocalizedString(@"PTBViews", nil);
+		[toolbarItem setLabel:label];
+		[toolbarItem setPaletteLabel:label];
+		[toolbarItem setImage:[NSImage imageWithSystemSymbolName:@"rectangle.split.3x1" accessibilityDescription:label]];
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction:@selector(selectViewsView)];
     } else if ([itemIdent isEqual: RTItemIdentifier]) {
-		// Set up the standard properties 
-		[toolbarItem setLabel: NSLocalizedString(@"PTBRT", nil)];
-		[toolbarItem setPaletteLabel: NSLocalizedString(@"PTBRT", nil)];
-		
-		// Use a custom view 
-		[toolbarItem setImage:[NSImage imageNamed:@"tb_rt"]];
-
-		// Action
+		NSString* label = NSLocalizedString(@"PTBRT", nil);
+		[toolbarItem setLabel:label];
+		[toolbarItem setPaletteLabel:label];
+		[toolbarItem setImage:[NSImage imageWithSystemSymbolName:@"waveform" accessibilityDescription:label]];
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction:@selector(selectRTView)];
     } else if ([itemIdent isEqual: EffectsItemIdentifier]) {
-		// Set up the standard properties 
-		[toolbarItem setLabel: NSLocalizedString(@"PTBEffects", nil)];
-		[toolbarItem setPaletteLabel: NSLocalizedString(@"PTBEffects", nil)];
-		
-		// Use a custom view 
-		[toolbarItem setImage:[NSImage imageNamed:@"tb_effects"]];
-		// Action
+		NSString* label = NSLocalizedString(@"PTBEffects", nil);
+		[toolbarItem setLabel:label];
+		[toolbarItem setPaletteLabel:label];
+		[toolbarItem setImage:[NSImage imageWithSystemSymbolName:@"wand.and.stars" accessibilityDescription:label]];
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction:@selector(selectEffectsView)];
     } else if ([itemIdent isEqual: DevicesItemIdentifier]) {
-		// Set up the standard properties 
-		[toolbarItem setLabel: NSLocalizedString(@"PTBDevices", nil)];
-		[toolbarItem setPaletteLabel: NSLocalizedString(@"PTBDevices", nil)];
-		
-		// Use a custom view 
-		[toolbarItem setImage:[NSImage imageNamed:@"tb_devices"]];
-		// Action
+		NSString* label = NSLocalizedString(@"PTBDevices", nil);
+		[toolbarItem setLabel:label];
+		[toolbarItem setPaletteLabel:label];
+		[toolbarItem setImage:[NSImage imageWithSystemSymbolName:@"speaker.wave.2" accessibilityDescription:label]];
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction:@selector(selectDevicesView)];
     } else if ([itemIdent isEqual: UpdateItemIdentifier]) {
-		// Set up the standard properties 
-		[toolbarItem setLabel: NSLocalizedString(@"PTBUpdate", nil)];
-		[toolbarItem setPaletteLabel: NSLocalizedString(@"PTBUpdate", nil)];
-		
-		// Use a custom view 
-		[toolbarItem setImage:[NSImage imageNamed:@"tb_update"]];
-
-		// Action
+		NSString* label = NSLocalizedString(@"PTBUpdate", nil);
+		[toolbarItem setLabel:label];
+		[toolbarItem setPaletteLabel:label];
+		[toolbarItem setImage:[NSImage imageWithSystemSymbolName:@"arrow.down.circle" accessibilityDescription:label]];
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction:@selector(selectUpdateView)];
 	} else {
@@ -147,27 +127,17 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
 - (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
     return [NSArray arrayWithObjects:	GeneralItemIdentifier,
-                                        NSToolbarSeparatorItemIdentifier, 
 										ViewsItemIdentifier,
 										RTItemIdentifier,
 										EffectsItemIdentifier,
 										DevicesItemIdentifier,
 										UpdateItemIdentifier,
-                                        NSToolbarFlexibleSpaceItemIdentifier,
                                         nil];
 }
 
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
-    return [NSArray arrayWithObjects:	GeneralItemIdentifier,
-										ViewsItemIdentifier,
-										RTItemIdentifier,
-										EffectsItemIdentifier,
-										DevicesItemIdentifier,
-										UpdateItemIdentifier,
-                                        NSToolbarSeparatorItemIdentifier, 
-                                        NSToolbarSpaceItemIdentifier,
-                                        NSToolbarFlexibleSpaceItemIdentifier, nil];
+    return [self toolbarDefaultItemIdentifiers:toolbar];
 }
 
 - (NSArray *)toolbarSelectableItemIdentifiers:(NSToolbar *)toolbar
