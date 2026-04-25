@@ -45,14 +45,15 @@ Call-site removals in `Sources/AudioApp.m` and `Sources/AudioDialogPrefs.m`:
 
 The `ARCheckForUpdates.framework/` directory on disk was left alone — only the project references were removed.
 
-## 3. QuickTime audio importer disabled in-place
+## 3. Audio importer rewritten on ExtAudioFile
 
-Kept the code in the tree behind a build flag (`AX_ENABLE_QUICKTIME_IMPORTER`) per user preference, so it can be restored later with an AVFoundation rewrite.
+Originally stubbed behind `AX_ENABLE_QUICKTIME_IMPORTER` while the QuickTime-based importer was unavailable. Now reimplemented on `ExtAudioFile` (AudioToolbox), which on modern macOS handles every format QuickTime did (mp3, m4a/aac, wav, aiff, caf, …) plus several it didn't. The build flag and both code paths it gated were removed.
 
-- `Sources/AudioFileImporter.m`: whole file wrapped in `#if AX_ENABLE_QUICKTIME_IMPORTER … #else <stub @implementation> #endif`. Stub implementation sets `mErrorMessage = @"Import of non-AIFF audio is not available in this build."` and returns `NO`, matching the existing failure path.
-- `Sources/ARFileUtilities.[hm]`: the two `FSSpec`/`FSRef` helpers (`makeFSSpec:fromPath:`, `makeNewFSSpec:fromPath:`) were wrapped in the same `#if`. The class's path/string utilities are unchanged. `FSSpec` and `FSRef` are no longer declared on modern SDKs, so both the `.h` declarations and `.m` implementations had to be guarded.
+- `Sources/AudioFileImporter.[hm]`: replaced with an `ExtAudioFile`-based decoder that opens the source URL, sets a client format of 32-bit float / 44.1 kHz / non-interleaved (1 or 2 channels matching the source), and reads into per-channel float buffers in `kImportReadFrames`-frame chunks on a background thread. Output samples are scaled by `[[AudioDialogPrefs shared] fullScaleVoltage] * 0.5` (same convention as the AIFF path, applied via `vDSP_vsmul`) and the buffers are handed to `AudioDataAmplitude` via `-setDataBuffer:size:channel:`, which already assumes `SOUND_DEFAULT_RATE` (44100). No temp AIFF round-trip; cancellation and progress updates marshal back to the main thread.
+- `Sources/ARFileUtilities.[hm]`: the FSSpec/FSRef helpers were the only thing this file existed for. The class is now an empty shell (kept in the project to avoid touching the pbxproj for a one-class delete).
+- `AudioXplorer.xcodeproj/project.pbxproj`: added `AudioToolbox.framework` to Linked Frameworks. Clang module autolink does not pick it up reliably with this target's settings, so it is linked explicitly.
 
-Call sites in `Sources/AudioSTWindowController.m` were left untouched; they now hit the stub and show the existing error alert.
+Call sites in `Sources/AudioSTWindowController.m` were left untouched — the public interface (`-amplitudeFromAnyFile:delegate:parentWindow:` + `amplitudeFromAnyFileCompletedWithAmplitude:` callback) is unchanged.
 
 ## 4. Audio Unit plug-in hosting ported
 
@@ -271,9 +272,9 @@ If the project is later moved out of an iCloud-synced location, this workaround 
 - AU plug-in discovery + effect rendering on a selection
 - Bundled `ChCurvusProAXPlugIns` gain plug-in
 - Real-time analysis window (opens, measures, runs)
+- **Import of non-AIFF audio** (mp3/m4a/wav/caf/…) via the new `ExtAudioFile` importer
 
 ### Disabled or degraded (by design in this pass)
-- **Non-AIFF file import**: code preserved behind `AX_ENABLE_QUICKTIME_IMPORTER`, currently off
 - **Check for Updates**: feature removed
 - **Third-party AU custom editor windows**: Carbon host stubbed; effects still usable through generic UI
 - **Effects-menu dynamic relabeling on modifier keys**: Carbon hook stubbed

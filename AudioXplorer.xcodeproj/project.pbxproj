@@ -226,6 +226,7 @@
 		A7C6E3BE05E1171A0059284A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		A7C6E3BF05E1171A0059284A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58F626F035E91EE018C2097 /* Accelerate.framework */; };
 		A7C6E3C005E1171A0059284A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F549DAC003B8AABA015325D8 /* CoreAudio.framework */; };
+		AA00000000000000000000A1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A2 /* AudioToolbox.framework */; };
 		A7C6E3C105E1171A0059284A /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DA748904794150005327CD /* AudioUnit.framework */; };
 		A7C6E3C205E1171A0059284A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DA748B0479415C005327CD /* Carbon.framework */; };
 		A7C6E3C305E1171A0059284A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A787B54204888A3B00532444 /* SystemConfiguration.framework */; };
@@ -507,6 +508,7 @@
 		F54266050376EA7601E81909 /* AudioDialogRecord.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AudioDialogRecord.h; path = Sources/AudioDialogRecord.h; sourceTree = "<group>"; };
 		F54266060376EA7601E81909 /* AudioDialogRecord.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AudioDialogRecord.m; path = Sources/AudioDialogRecord.m; sourceTree = "<group>"; };
 		F549DAC003B8AABA015325D8 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		AA00000000000000000000A2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		F549E21203BB1724015325D8 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AudioPlayer.h; path = Sources/AudioPlayer.h; sourceTree = "<group>"; };
 		F549E21303BB1724015325D8 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AudioPlayer.m; path = Sources/AudioPlayer.m; sourceTree = "<group>"; };
 		F56A190B03C073D201EBA97F /* AudioDataStruct.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AudioDataStruct.h; path = Sources/AudioDataStruct.h; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				A7C6E3BE05E1171A0059284A /* Cocoa.framework in Frameworks */,
 				A7C6E3BF05E1171A0059284A /* Accelerate.framework in Frameworks */,
 				A7C6E3C005E1171A0059284A /* CoreAudio.framework in Frameworks */,
+				AA00000000000000000000A1 /* AudioToolbox.framework in Frameworks */,
 				A7C6E3C105E1171A0059284A /* AudioUnit.framework in Frameworks */,
 				A7C6E3C205E1171A0059284A /* Carbon.framework in Frameworks */,
 				A7C6E3C305E1171A0059284A /* SystemConfiguration.framework in Frameworks */,
@@ -564,6 +567,7 @@
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
 				F58F626F035E91EE018C2097 /* Accelerate.framework */,
 				F549DAC003B8AABA015325D8 /* CoreAudio.framework */,
+				AA00000000000000000000A2 /* AudioToolbox.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
