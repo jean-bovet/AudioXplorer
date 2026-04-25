@@ -31,7 +31,7 @@
 
 #import "AXAUComponent.h"
 #import "AudioConstants.h"
-#import <AudioUnit/AudioUnitCarbonView.h>
+// AudioUnitCarbonView was removed from macOS. Custom AU editor windows are stubbed out below.
 
 @implementation AXAUComponent
 
@@ -64,30 +64,7 @@ OSStatus inputCallback(void     *inRefCon,
     return noErr;
 }
 
-void auCarbonViewCallback(
-  void *                      inUserData,
-  AudioUnitCarbonView         inView,
-  const AudioUnitParameter *  inParameter,
-  AudioUnitCarbonViewEventID  inEvent,
-  const void *                inEventParam
-)
-{
-}
-
-OSStatus carbonEventCallback(EventHandlerCallRef inHandlerCallRef, EventRef inEvent, void *inUserData)
-{
-    AXAUComponent *component = (AXAUComponent*)inUserData;
-    [component closeUI];
-    return noErr;
-}
-
-OSStatus carbonButtonEventCallback(EventHandlerCallRef inHandlerCallRef, EventRef inEvent, void *inUserData)
-{
-  //  AXAUComponent *component = (AXAUComponent*)inUserData;
-    return noErr;
-}
-
-+ (AXAUComponent*)componentWithDescription:(ComponentDescription)description name:(NSString*)name
++ (AXAUComponent*)componentWithDescription:(AudioComponentDescription)description name:(NSString*)name
 {
     AXAUComponent *component = [[AXAUComponent alloc] init];
     [component setDescription:description];
@@ -122,7 +99,7 @@ OSStatus carbonButtonEventCallback(EventHandlerCallRef inHandlerCallRef, EventRe
     [super dealloc];
 }
 
-- (void)setDescription:(ComponentDescription)description
+- (void)setDescription:(AudioComponentDescription)description
 {
     mDescription = description;
 }
@@ -149,52 +126,11 @@ OSStatus carbonButtonEventCallback(EventHandlerCallRef inHandlerCallRef, EventRe
 
 - (void)findUIComponent
 {
-    // Setup the default UI
-    mEditorDescription.componentType = kAudioUnitCarbonViewComponentType;
-    mEditorDescription.componentSubType = 'gnrc';
-    mEditorDescription.componentManufacturer = 'appl';
-    mEditorDescription.componentFlags = 0;
-    mEditorDescription.componentFlagsMask = 0;
-
-    // Get the property size (if it exists for the AudioUnit)
-    UInt32 propertySize;
-    OSStatus err = AudioUnitGetPropertyInfo(mAudioUnit,
-                                            kAudioUnitProperty_GetUIComponentList,
-                                            kAudioUnitScope_Global,
-                                            0,
-                                            &propertySize,
-                                            NULL);
-    if (err) {
-        // No custom UI, we are done.
-        mHasUI = YES;
-        return;
-    }
-    
-    // Allocate enough memory
-    mAUEditorCount = propertySize / sizeof(ComponentDescription);
-    
-    if(mEditorDescriptionArray)
-        free(mEditorDescriptionArray);
-        
-    mEditorDescriptionArray = malloc(propertySize);
-    
-    // Get the property
-    err = AudioUnitGetProperty(mAudioUnit,
-                            kAudioUnitProperty_GetUIComponentList,
-                            kAudioUnitScope_Global,
-                            0,
-                            mEditorDescriptionArray,
-                            &propertySize);
-    if (err) {
-        NSLog(@"Unable to get the UI editor, error %d", err);
-        free(mEditorDescriptionArray);
-        mEditorDescriptionArray = NULL;
-        return;
-    }
-    
-    mEditorDescription = mEditorDescriptionArray[0];
-    
-    mHasUI = YES;
+    // Custom AU editor windows (Carbon-based) are not supported in this build.
+    // The AU is still usable for effect rendering; only the editor window is disabled.
+    mHasUI = NO;
+    mEditorDescriptionArray = NULL;
+    mAUEditorCount = 0;
 }
 
 - (BOOL)open
@@ -202,42 +138,42 @@ OSStatus carbonButtonEventCallback(EventHandlerCallRef inHandlerCallRef, EventRe
     [self close];
     
     // Find the component
-    mComponent = FindNextComponent (NULL, &mDescription);
+    mComponent = AudioComponentFindNext (NULL, &mDescription);
     if (mComponent == NULL) {
         NSLog(@"Unable to find the component (open)");
         return NO;
     }
-    
+
     // Open the component
-    OSErr result = OpenAComponent (mComponent, &mAudioUnit);
+    OSStatus result = AudioComponentInstanceNew (mComponent, &mAudioUnit);
     if (result) {
-        NSLog(@"OpenAComponent error %d", result);
+        NSLog(@"AudioComponentInstanceNew error %d", (int)result);
         return NO;
     }
 
     // Initialize the component
     result = AudioUnitInitialize(mAudioUnit);
     if (result) {
-        NSLog(@"AudioUnitInitialize error %d", result);
-        CloseComponent(mAudioUnit);
+        NSLog(@"AudioUnitInitialize error %d", (int)result);
+        AudioComponentInstanceDispose(mAudioUnit);
         return NO;
     }
-    
+
     // Register the callback
     AURenderCallbackStruct theCallback;
     theCallback.inputProc = inputCallback;
     theCallback.inputProcRefCon = self;
-    
-    result = AudioUnitSetProperty(mAudioUnit, 
+
+    result = AudioUnitSetProperty(mAudioUnit,
                                 kAudioUnitProperty_SetRenderCallback,
                                 kAudioUnitScope_Input,
                                 0,
                                 &theCallback,
-                                sizeof (theCallback)); 
+                                sizeof (theCallback));
     if (result) {
-        NSLog(@"Unable to register the callback, error %d", result);
+        NSLog(@"Unable to register the callback, error %d", (int)result);
         AudioUnitUninitialize(mAudioUnit);
-        CloseComponent(mAudioUnit);
+        AudioComponentInstanceDispose(mAudioUnit);
         return NO;
     }
 
@@ -245,24 +181,24 @@ OSStatus carbonButtonEventCallback(EventHandlerCallRef inHandlerCallRef, EventRe
     AudioStreamBasicDescription theStreamFormat;
     theStreamFormat.mSampleRate = 44100.0;
     theStreamFormat.mFormatID = kAudioFormatLinearPCM;
-    theStreamFormat.mFormatFlags = kAudioFormatFlagsNativeFloatPacked 
+    theStreamFormat.mFormatFlags = kAudioFormatFlagsNativeFloatPacked
                                    | kAudioFormatFlagIsNonInterleaved;
-    theStreamFormat.mBytesPerPacket = 4;        
-    theStreamFormat.mFramesPerPacket = 1;       
-    theStreamFormat.mBytesPerFrame = 4;         
-    theStreamFormat.mChannelsPerFrame = 2;      
-    theStreamFormat.mBitsPerChannel = sizeof (Float32) * 8;     
+    theStreamFormat.mBytesPerPacket = 4;
+    theStreamFormat.mFramesPerPacket = 1;
+    theStreamFormat.mBytesPerFrame = 4;
+    theStreamFormat.mChannelsPerFrame = 2;
+    theStreamFormat.mBitsPerChannel = sizeof (Float32) * 8;
 
-    result = AudioUnitSetProperty (mAudioUnit, 
+    result = AudioUnitSetProperty (mAudioUnit,
                       kAudioUnitProperty_StreamFormat,
                       kAudioUnitScope_Input,
                       0,
                       &theStreamFormat,
                       sizeof (theStreamFormat));
     if (result) {
-        NSLog(@"Unable to set the stream format of the callback, error %d", result);
+        NSLog(@"Unable to set the stream format of the callback, error %d", (int)result);
         AudioUnitUninitialize(mAudioUnit);
-        CloseComponent(mAudioUnit);
+        AudioComponentInstanceDispose(mAudioUnit);
         return NO;
     }
 
@@ -280,16 +216,16 @@ OSStatus carbonButtonEventCallback(EventHandlerCallRef inHandlerCallRef, EventRe
     if(mOpened == NO) return YES;
 
     // Uninitialize the component
-    OSErr result = AudioUnitUninitialize(mAudioUnit);
+    OSStatus result = AudioUnitUninitialize(mAudioUnit);
     if (result) {
-        NSLog(@"AudioUnitUninitialize error %d", result);
+        NSLog(@"AudioUnitUninitialize error %d", (int)result);
         return NO;
     }
 
     // Close the component
-    result = CloseComponent(mAudioUnit);
+    result = AudioComponentInstanceDispose(mAudioUnit);
     if (result) {
-        NSLog(@"CloseComponent error %d", result);
+        NSLog(@"AudioComponentInstanceDispose error %d", (int)result);
         return NO;
     }
     
@@ -301,134 +237,19 @@ OSStatus carbonButtonEventCallback(EventHandlerCallRef inHandlerCallRef, EventRe
 
 - (BOOL)openUI
 {
-    if(mOpened == NO)
-        if([self open] == NO)
-            return NO;
-            
-    if(mHasUI == NO) return NO;
-
-    if(mCarbonWindow)
-    {
-        [mCarbonWindow makeKeyAndOrderFront:nil];
-        return YES;
-    }
-
-    // Find the component
-    mEditorComponent = FindNextComponent(NULL, &mEditorDescription);
-    if(mEditorComponent == NULL)
-    {
-        NSLog(@"Unable to find the editor component");
-        return NO;
-    }
-    
-    // Open the component
-    OSErr err = OpenAComponent(mEditorComponent, &mEditorView);
-    if(err)
-    {
-        NSLog(@"OpenAComponent error %d", err);
-        return NO;
-    }
-
-    // Create the carbon view for the component UI
-    CFBundleRef bundleRef = CFBundleGetMainBundle();
-    IBNibRef 	nibRef;
-
-    err = CreateNibReferenceWithCFBundle(bundleRef, CFSTR("CarbonWindow"), &nibRef);
-    if(err)
-    {
-        NSLog(@"Failed to create carbon nib reference, error %d", err);
-        return NO;
-    }
-
- //   CFRelease(bundleRef);
-
-    // Create the carbon window
-    err = CreateWindowFromNib(nibRef, CFSTR("Window"), &mWindowRef);
-    if (err)
-    {
-        NSLog(@"Failed to create carbon window from nib, error %d", err);
-        return NO;
-    }
-
-    DisposeNibReference(nibRef);
-    
-    // Create the cocoa window
-    mCarbonWindow = [[NSWindow alloc] initWithWindowRef:mWindowRef];
-    [mCarbonWindow setDelegate:self];
-    [mCarbonWindow setTitle:mName];
-    
-    // Get the root control (the window itself)
-    ControlRef theRootControl;
-    err = GetRootControl(mWindowRef, &theRootControl);
-    if(err)
-    {
-        NSLog(@"GetRootControl error %d", err);
-        return NO;
-    }
-    
-    Float32Point theLocation = { 0, 0 };
-    Float32Point theSize = { 400, 100 };
-    ControlRef theViewPane;
-        
-    err = AudioUnitCarbonViewCreate(mEditorView, mAudioUnit, mWindowRef,
-                            theRootControl, &theLocation, &theSize, &theViewPane);
-    if(err)
-    {
-        NSLog(@"AudioUnitCarbonViewCreate error %d", err);
-        return NO;
-    }
-
-    err = AudioUnitCarbonViewSetEventListener(mEditorView, auCarbonViewCallback, self);
-    if(err)
-    {
-        NSLog(@"AudioUnitCarbonViewSetEventListener error %d", err);
-        return NO;
-    }
-    
-    // Change the window size to fit the UI
-    Rect r;
-    GetControlBounds(theViewPane, &r);
-    theSize.x = r.right-r.left;
-    theSize.y = r.bottom-r.top;
-    SizeWindow(mWindowRef, theSize.x, theSize.y, YES);
-    
-    // Show the window now
-//    [mCarbonWindow makeKeyAndOrderFront:nil];
-    [mCarbonWindow setIsVisible:YES];
-
-    // Register the close window event callback routine
-    EventTypeSpec event;
-    event.eventClass = kEventClassWindow;
-    event.eventKind = kEventWindowClosed;
-    
-    InstallWindowEventHandler(mWindowRef,
-                                NewEventHandlerUPP(carbonEventCallback),
-                                1,
-                                &event,
-                                self,
-                                NULL);
-    
-    return YES;
+    if (mOpened == NO && [self open] == NO) return NO;
+    // Custom AU editor windows used AudioUnitCarbonView, which was removed from macOS.
+    // AUs are still discoverable and runnable for effect rendering, just without a custom UI.
+    return NO;
 }
 
 - (BOOL)closeUI
 {
-    if(mCarbonWindow)
-    {
-        [mCarbonWindow close];
-        mCarbonWindow = NULL;
-        mCarbonWindow = NULL;
-    }
     return YES;
 }
 
 - (void)windowWillClose:(NSNotification *)notification
 {
-   /* if([notification object] == mCarbonWindow && mCarbonWindow && mWindowRef)
-    {
-        DisposeWindow(mWindowRef);
-        mWindowRef = NULL;
-    }*/
 }
 
 - (BOOL)performEffectOnData:(id<DataSourceProtocol>)data channel:(unsigned short)channel parentWindow:(NSWindow*)parentWindow

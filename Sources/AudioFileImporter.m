@@ -33,6 +33,9 @@
 #import "AudioDialogPrefs.h"
 #import "AIFFCodec.h"
 #import "ARFileUtilities.h"
+
+#if AX_ENABLE_QUICKTIME_IMPORTER
+
 #import <QuickTime/QuickTime.h>
 
 @implementation AudioFileImporter
@@ -338,3 +341,40 @@ error:  [pool release];
 }
 
 @end
+
+#else  // !AX_ENABLE_QUICKTIME_IMPORTER
+
+@implementation AudioFileImporter
+
+- (id)init
+{
+    if ((self = [super init])) {
+        mErrorMessage = [[NSMutableString alloc] initWithString:
+            @"Import of non-AIFF audio is not available in this build."];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [mSourceFile release];
+    [mTempFile release];
+    [mAmplitude release];
+    [mErrorMessage release];
+    [super dealloc];
+}
+
+- (NSString*)errorMessage { return mErrorMessage; }
+- (NSString*)sourceFile   { return mSourceFile; }
+
+- (BOOL)amplitudeFromAnyFile:(NSString*)sourceFile delegate:(id)delegate parentWindow:(NSWindow*)window
+{
+    return NO;
+}
+
+- (void)convertUsingQuickTimeStep1Finished:(id)object { }
+- (void)convertUsingQuickTimeStep2Finished:(id)object { }
+
+@end
+
+#endif  // AX_ENABLE_QUICKTIME_IMPORTER

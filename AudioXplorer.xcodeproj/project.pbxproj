@@ -54,8 +54,6 @@
 		A727C37E07139CCD00CA2C30 /* CAStreamObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A727C36707139CCD00CA2C30 /* CAStreamObject.h */; };
 		A727C37F07139CCD00CA2C30 /* CAStreamObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A727C36807139CCD00CA2C30 /* CAStreamObject.m */; };
 		A76E95A409202BD500005632 /* AXPlugInHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = A76E95A309202BD500005632 /* AXPlugInHeader.h */; };
-		A77F4C2B0AC7594F0079B663 /* ARCheckForUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77F4C280AC7594F0079B663 /* ARCheckForUpdates.framework */; };
-		A77F4C2E0AC759550079B663 /* ARCheckForUpdates.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A77F4C280AC7594F0079B663 /* ARCheckForUpdates.framework */; };
 		A7C6E2DC05E1171A0059284A /* AudioDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A37F4AEFDCFA73011CA2CEA /* AudioDocument.h */; };
 		A7C6E2DD05E1171A0059284A /* AudioDataAmplitude.h in Headers */ = {isa = PBXBuildFile; fileRef = F58F6257035E90FE018C2097 /* AudioDataAmplitude.h */; };
 		A7C6E2DE05E1171A0059284A /* AudioOpFFT.h in Headers */ = {isa = PBXBuildFile; fileRef = F58F625B035E90FE018C2097 /* AudioOpFFT.h */; };
@@ -226,12 +224,11 @@
 		A7C6E3B605E1171A0059284A /* AudioSynth.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E9B27A050EF1E900A28E5E /* AudioSynth.m */; };
 		A7C6E3BB05E1171A0059284A /* AudioDataUndo.m in Sources */ = {isa = PBXBuildFile; fileRef = A76355F405B669150096D9C9 /* AudioDataUndo.m */; };
 		A7C6E3BE05E1171A0059284A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		A7C6E3BF05E1171A0059284A /* vecLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58F626F035E91EE018C2097 /* vecLib.framework */; };
+		A7C6E3BF05E1171A0059284A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58F626F035E91EE018C2097 /* Accelerate.framework */; };
 		A7C6E3C005E1171A0059284A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F549DAC003B8AABA015325D8 /* CoreAudio.framework */; };
 		A7C6E3C105E1171A0059284A /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DA748904794150005327CD /* AudioUnit.framework */; };
 		A7C6E3C205E1171A0059284A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DA748B0479415C005327CD /* Carbon.framework */; };
 		A7C6E3C305E1171A0059284A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A787B54204888A3B00532444 /* SystemConfiguration.framework */; };
-		A7C6E3C405E1171A0059284A /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B8FCD104AA390200A8021B /* QuickTime.framework */; };
 		A7CB0CC3071CEA7300FE693E /* AudioDialogPrefs+Toolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CB0CC1071CEA7300FE693E /* AudioDialogPrefs+Toolbar.h */; };
 		A7CB0CC4071CEA7300FE693E /* AudioDialogPrefs+Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CB0CC2071CEA7300FE693E /* AudioDialogPrefs+Toolbar.m */; };
 		A7CB0D24071CEE3B00FE693E /* tb_devices.icns in Resources */ = {isa = PBXBuildFile; fileRef = A7CB0D1E071CEE3B00FE693E /* tb_devices.icns */; };
@@ -266,7 +263,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A77F4C2E0AC759550079B663 /* ARCheckForUpdates.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +345,6 @@
 		A77C653004AD255E00D20E25 /* AudioFileImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioFileImporter.m; path = Sources/AudioFileImporter.m; sourceTree = "<group>"; };
 		A77C653504AD25B700D20E25 /* ARFileUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARFileUtilities.h; path = Sources/ARFileUtilities.h; sourceTree = "<group>"; };
 		A77C653604AD25B700D20E25 /* ARFileUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARFileUtilities.m; path = Sources/ARFileUtilities.m; sourceTree = "<group>"; };
-		A77F4C280AC7594F0079B663 /* ARCheckForUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARCheckForUpdates.framework; sourceTree = "<group>"; };
 		A780337204601B5B00DA5BB0 /* AudioPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPrinter.h; path = Sources/AudioPrinter.h; sourceTree = "<group>"; };
 		A780337304601B5B00DA5BB0 /* AudioPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioPrinter.m; path = Sources/AudioPrinter.m; sourceTree = "<group>"; };
 		A7822EB0048631C7007635FB /* ARDynamicMenu.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ARDynamicMenu.h; path = ARFramework/ARDynamicMenu/ARDynamicMenu.h; sourceTree = "<group>"; };
@@ -472,7 +467,6 @@
 		A7AF16300408DB3600FEC91A /* AudioRTInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioRTInfo.m; path = Sources/AudioRTInfo.m; sourceTree = "<group>"; };
 		A7B02E6504103CE2005326DA /* AudioVersions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioVersions.h; path = Sources/AudioVersions.h; sourceTree = "<group>"; };
 		A7B805C404AA6C3D00A8021B /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ARProgressPanel.nib; sourceTree = "<group>"; };
-		A7B8FCD104AA390200A8021B /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
 		A7B8FCD404AA599E00A8021B /* ARProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARProgressPanel.h; path = Sources/ARProgressPanel.h; sourceTree = "<group>"; };
 		A7B8FCD504AA599E00A8021B /* ARProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARProgressPanel.m; path = Sources/ARProgressPanel.m; sourceTree = "<group>"; };
 		A7C6E2D105E116F10059284A /* Updates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Updates; sourceTree = "<group>"; };
@@ -533,7 +527,7 @@
 		F58F625F035E90FE018C2097 /* AudioConstants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AudioConstants.h; path = Sources/AudioConstants.h; sourceTree = "<group>"; };
 		F58F6260035E90FE018C2097 /* AudioView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AudioView.h; path = Sources/AudioView.h; sourceTree = "<group>"; };
 		F58F6261035E90FE018C2097 /* AudioView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AudioView.m; path = Sources/AudioView.m; sourceTree = "<group>"; };
-		F58F626F035E91EE018C2097 /* vecLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vecLib.framework; path = /System/Library/Frameworks/vecLib.framework; sourceTree = "<absolute>"; };
+		F58F626F035E91EE018C2097 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		F58F629A035E9305018C2097 /* AudioInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AudioInspectorController.h; path = Sources/AudioInspectorController.h; sourceTree = "<group>"; };
 		F58F629B035E9305018C2097 /* AudioInspectorController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AudioInspectorController.m; path = Sources/AudioInspectorController.m; sourceTree = "<group>"; };
 		F58F62AF035F3A81018C2097 /* AudioApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AudioApp.h; path = Sources/AudioApp.h; sourceTree = "<group>"; };
@@ -551,13 +545,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7C6E3BE05E1171A0059284A /* Cocoa.framework in Frameworks */,
-				A7C6E3BF05E1171A0059284A /* vecLib.framework in Frameworks */,
+				A7C6E3BF05E1171A0059284A /* Accelerate.framework in Frameworks */,
 				A7C6E3C005E1171A0059284A /* CoreAudio.framework in Frameworks */,
 				A7C6E3C105E1171A0059284A /* AudioUnit.framework in Frameworks */,
 				A7C6E3C205E1171A0059284A /* Carbon.framework in Frameworks */,
 				A7C6E3C305E1171A0059284A /* SystemConfiguration.framework in Frameworks */,
-				A7C6E3C405E1171A0059284A /* QuickTime.framework in Frameworks */,
-				A77F4C2B0AC7594F0079B663 /* ARCheckForUpdates.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,9 +562,8 @@
 				A7DA748904794150005327CD /* AudioUnit.framework */,
 				A7DA748B0479415C005327CD /* Carbon.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
-				F58F626F035E91EE018C2097 /* vecLib.framework */,
+				F58F626F035E91EE018C2097 /* Accelerate.framework */,
 				F549DAC003B8AABA015325D8 /* CoreAudio.framework */,
-				A7B8FCD104AA390200A8021B /* QuickTime.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -655,7 +646,6 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A77F4C280AC7594F0079B663 /* ARCheckForUpdates.framework */,
 				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
@@ -1199,6 +1189,7 @@
 				A7C6E3BC05E1171A0059284A /* Frameworks */,
 				A7C6E3C505E1171A0059284A /* CopyFiles */,
 				A7C6E3C705E1171A0059284A /* CopyFiles */,
+				AA00112200000000000000B1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1219,6 +1210,12 @@
 			isa = PBXProject;
 			attributes = {
 				ORGANIZATIONNAME = "Arizona Software";
+				TargetAttributes = {
+					A7C6E2DA05E1171A0059284A = {
+						DevelopmentTeam = REDACTED-TEAM-ID;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = A7FD6470087C49660062AEC0 /* Build configuration list for PBXProject "AudioXplorer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1311,6 +1308,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AA00112200000000000000B1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Strip xattrs before codesign";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nDST=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n# Strip xattrs and codesign in one shot to beat iCloud's fileprovider race.\n# Retry a few times in case iCloud re-tags between strip and sign.\nENT_FLAG=\"\"\nif [ -f \"${CODE_SIGN_ENTITLEMENTS}\" ]; then\n  ENT_FLAG=\"--entitlements ${CODE_SIGN_ENTITLEMENTS}\"\nfi\nfor i in 1 2 3 4 5 6 7 8; do\n  /usr/bin/xattr -cr \"$DST\"\n  if /usr/bin/codesign --force --sign - --timestamp=none --generate-entitlement-der --deep $ENT_FLAG \"$DST\" 2>/tmp/cs.err; then\n    exit 0\n  fi\n  cat /tmp/cs.err >&2\ndone\necho \"codesign failed after retries\" >&2\nexit 1\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A7C6E36605E1171A0059284A /* Sources */ = {
@@ -1699,97 +1713,77 @@
 		A7FD646D087C49660062AEC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = REDACTED-TEAM-ID;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+					"\"$(SRCROOT)\"",
 				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = AudioXplorer;
-				SDKROOT_i386 = "";
-				SDKROOT_ppc = "";
-				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
+					"-Wno-deprecated-declarations",
 				);
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
 		A7FD646E087C49660062AEC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = REDACTED-TEAM-ID;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
+					"\"$(SRCROOT)\"",
 				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "/path/to/old-dev-dir/ARFramework/To\\ Be\\ Used";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)\"";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = AudioXplorer;
-				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
+					"-Wno-deprecated-declarations",
 				);
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
 		A7FD646F087C49660062AEC0 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				DEVELOPMENT_TEAM = REDACTED-TEAM-ID;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
+					"\"$(SRCROOT)\"",
 				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "/path/to/old-dev-dir/ARFramework/To\\ Be\\ Used";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = AudioXplorer;
-				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
+					"-Wno-deprecated-declarations",
 				);
 				WRAPPER_EXTENSION = app;
 			};
@@ -1798,42 +1792,39 @@
 		A7FD6471087C49660062AEC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = arm64;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.6;
-				SDKROOT = macosx10.6;
-				SDKROOT_i386 = /Developer/SDKs/MacOSX10.4u.sdk;
-				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		A7FD6472087C49660062AEC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = arm64;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_FAST_OBJC_DISPATCH = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.6;
-				SDKROOT = macosx10.6;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		A7FD6473087C49660062AEC0 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = arm64;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1842,9 +1833,9 @@
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.6;
-				SDKROOT = macosx10.6;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Default;

@@ -36,12 +36,12 @@
 @interface AXAUComponent : NSObject <NSWindowDelegate> {
     NSString *mName;
     
-    ComponentDescription mDescription;
-    ComponentDescription *mEditorDescriptionArray;
-    ComponentDescription mEditorDescription;
+    AudioComponentDescription mDescription;
+    AudioComponentDescription *mEditorDescriptionArray;
+    AudioComponentDescription mEditorDescription;
     
-    Component mComponent;
-    Component mEditorComponent;
+    AudioComponent mComponent;
+    AudioComponent mEditorComponent;
     
     AudioUnit mAudioUnit;
     AudioUnit mEditorView;
@@ -57,9 +57,9 @@
     short mAUEditorCount;
 }
 
-+ (AXAUComponent*)componentWithDescription:(ComponentDescription)description name:(NSString*)name;
++ (AXAUComponent*)componentWithDescription:(AudioComponentDescription)description name:(NSString*)name;
 
-- (void)setDescription:(ComponentDescription)description;
+- (void)setDescription:(AudioComponentDescription)description;
 - (void)setName:(NSString*)name;
 
 - (NSString*)title;

@@ -39,12 +39,13 @@ typedef OSStatus
 (*AudioSynthProc)(double *phase, const double amplitude, const double incr, const unsigned numberOfSample, float *output);
 
 @interface AudioSynth : NSObject {
+@public
     UInt32 			mOutputDeviceID;
     AudioStreamBasicDescription	mStreamDescription;
-                        
+
     id				mClientTicket;
     AudioSynthProc  mCallBackProc;
-    
+
     double			mFreq;
     double			mFreq_;
     double			mPhase;

@@ -73,7 +73,6 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
     // The toolbar will use self method to obtain toolbar items that can be displayed
     // in the customization sheet, or in the toolbar itself 
     NSToolbarItem *toolbarItem = [[[NSToolbarItem alloc] initWithItemIdentifier: itemIdent] autorelease];
-	NSSize itemSize = NSMakeSize(32, 32);
 
     if ([itemIdent isEqual: GeneralItemIdentifier]) {
 		// Set up the standard properties 
@@ -82,9 +81,6 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
 		
 		// Use a custom view 
 		[toolbarItem setImage:[NSImage imageNamed:@"tb_general"]];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
-		
 		// Action
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction:@selector(selectGeneralView)];
@@ -95,8 +91,6 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
 		
 		// Use a custom view 
 		[toolbarItem setImage:[NSImage imageNamed:@"tb_views"]];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
 
 		// Action
 		[toolbarItem setTarget:self];
@@ -108,8 +102,6 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
 		
 		// Use a custom view 
 		[toolbarItem setImage:[NSImage imageNamed:@"tb_rt"]];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
 
 		// Action
 		[toolbarItem setTarget:self];
@@ -121,9 +113,6 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
 		
 		// Use a custom view 
 		[toolbarItem setImage:[NSImage imageNamed:@"tb_effects"]];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
-		
 		// Action
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction:@selector(selectEffectsView)];
@@ -134,9 +123,6 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
 		
 		// Use a custom view 
 		[toolbarItem setImage:[NSImage imageNamed:@"tb_devices"]];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
-		
 		// Action
 		[toolbarItem setTarget:self];
 		[toolbarItem setAction:@selector(selectDevicesView)];
@@ -147,8 +133,6 @@ static NSString*	UpdateItemIdentifier = @"UpdateItemIdentifier";
 		
 		// Use a custom view 
 		[toolbarItem setImage:[NSImage imageNamed:@"tb_update"]];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
 
 		// Action
 		[toolbarItem setTarget:self];

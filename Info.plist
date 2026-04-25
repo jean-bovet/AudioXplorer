@@ -47,6 +47,8 @@
 	<string>126</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>AudioXplorer records and analyzes audio from the selected input device.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

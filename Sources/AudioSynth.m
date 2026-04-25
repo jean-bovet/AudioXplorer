@@ -32,10 +32,6 @@
 #import "AudioSynth.h"
 #import "CADeviceManager.h"
 
-typedef struct {
-    @defs(AudioSynth);
-} AudioSynthStruct;
-
 OSStatus _synthUserProc(double *phase, const double amplitude, const double incr, const unsigned numberOfSample, float *output)
 {
     unsigned sample;
@@ -57,7 +53,7 @@ OSStatus _synthIOProc (AudioDeviceID  inDevice,
                         const AudioTimeStamp* inOutputTime, 
                         void* userData)
 {
-    AudioSynthStruct *as = userData;
+    AudioSynth *as = (AudioSynth *)userData;
 
     if(outOutputData == NULL) return kAudioHardwareNoError;
     if(outOutputData->mBuffers[0].mData == NULL) return kAudioHardwareNoError;

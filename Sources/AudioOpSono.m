@@ -111,17 +111,17 @@
         }
 
         // Prepare the odd-even array from temporal data
-        ctoz((COMPLEX*)mAudioDataForFFT, 2, &mComplexSplitBufferFFT, 1, fft_n2);
-        
+        vDSP_ctoz((COMPLEX*)mAudioDataForFFT, 2, &mComplexSplitBufferFFT, 1, fft_n2);
+
         // Compute the FFT
-        fft_zrip([[AudioOperator shared] weightBufferForLog2:fft_log2],
+        vDSP_fft_zrip([[AudioOperator shared] weightBufferForLog2:fft_log2],
                     &mComplexSplitBufferFFT, 1, fft_log2, FFT_FORWARD);
 
         // Scale
         FLOAT scale = 1.0/fft_n2;
-        
-        vsmul(mComplexSplitBufferFFT.realp, 1, &scale, mComplexSplitBufferFFT.realp, 1, fft_n2);
-        vsmul(mComplexSplitBufferFFT.imagp, 1, &scale, mComplexSplitBufferFFT.imagp, 1, fft_n2);
+
+        vDSP_vsmul(mComplexSplitBufferFFT.realp, 1, &scale, mComplexSplitBufferFFT.realp, 1, fft_n2);
+        vDSP_vsmul(mComplexSplitBufferFFT.imagp, 1, &scale, mComplexSplitBufferFFT.imagp, 1, fft_n2);
 
         // Copy the temporary buffer into the sonogram buffer        
         [mAudioDataSono addFFT:mComplexSplitBufferFFT];

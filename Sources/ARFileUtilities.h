@@ -35,7 +35,9 @@
 
 }
 
+#if AX_ENABLE_QUICKTIME_IMPORTER
 + (OSErr)makeNewFSSpec:(FSSpec *)outSpecPtr fromPath:(NSString *)inPath;
 + (OSErr)makeFSSpec:(FSSpec *)outSpecPtr fromPath:(NSString *)inPath;
+#endif
 
 @end

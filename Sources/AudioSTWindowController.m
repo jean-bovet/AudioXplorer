@@ -1849,30 +1849,22 @@ static NSString*	ViewLayoutToolbarIdentifier = @"View Layout Item Identifier";
 
     if ([itemIdent isEqual: ViewListDisplayModeToolbarIdentifier])
     {
-        NSSize itemSize = [mViewListDisplayModeView frame].size;
-        
-	// Set up the standard properties 
+	// Set up the standard properties
 	[toolbarItem setLabel: NSLocalizedString(@"", nil)];
 	[toolbarItem setPaletteLabel: NSLocalizedString(@"View List Display Mode Button", nil)];
 	[toolbarItem setToolTip: NSLocalizedString(@"Change the display mode of the view list", nil)];
-	
-	// Use a custom view 
+
+	// Use a custom view
 	[toolbarItem setView:mViewListDisplayModeView];
-	[toolbarItem setMinSize:itemSize];
-	[toolbarItem setMaxSize:itemSize];
     } else if ([itemIdent isEqual: ViewLayoutToolbarIdentifier])
     {
-        NSSize itemSize = [mViewLayoutView frame].size;
-        
-	// Set up the standard properties 
+	// Set up the standard properties
 	[toolbarItem setLabel: NSLocalizedString(@"", nil)];
 	//[toolbarItem setPaletteLabel: NSLocalizedString(@"View List Display Mode Button", nil)];
 	//[toolbarItem setToolTip: NSLocalizedString(@"Change the display mode of the view list", nil)];
-	
-	// Use a custom view 
+
+	// Use a custom view
 	[toolbarItem setView:mViewLayoutView];
-	[toolbarItem setMinSize:itemSize];
-	[toolbarItem setMaxSize:itemSize];
     } else {
 	// itemIdent refered to a toolbar item that is not provide or supported by us or cocoa 
 	// Returning nil will inform the toolbar self kind of item is not supported 

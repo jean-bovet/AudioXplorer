@@ -33,6 +33,8 @@
 
 @implementation ARFileUtilities
 
+#if AX_ENABLE_QUICKTIME_IMPORTER
+
 + (OSErr)makeNewFSSpec:(FSSpec *)outSpecPtr fromPath:(NSString *)inPath
 {
     FSRef fsref;
@@ -74,5 +76,7 @@
     }
     return noErr;
 }
+
+#endif  // AX_ENABLE_QUICKTIME_IMPORTER
 
 @end

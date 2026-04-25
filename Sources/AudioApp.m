@@ -40,7 +40,6 @@
 #import "AudioVersions.h"
 #import "AudioTipsPanel.h"
 #import "AudioEffectController.h"
-#import <ARCheckForUpdates/ARCheckForUpdates.h>
 
 @implementation AudioApp
 
@@ -48,7 +47,14 @@ static NSMutableArray *_staticObjectArray = NULL;
 
 + (void)initialize
 {
-    [AudioDialogPrefs initDefaultValues];       
+    [[NSUserDefaults standardUserDefaults]
+        registerDefaults:@{ @"NSQuitAlwaysKeepsWindows": @NO }];
+    [AudioDialogPrefs initDefaultValues];
+}
+
+- (BOOL)applicationSupportsSecureRestorableState:(NSApplication *)app
+{
+    return YES;
 }
 
 - (id)init
@@ -91,11 +97,7 @@ static NSMutableArray *_staticObjectArray = NULL;
 
 - (void)initVersionChecker
 {
-    ARUpdateManager *manager = [ARUpdateManager sharedManager];
-    [manager setServerName:@"www.arizona-software.ch"];
-    [manager setServerPath:@"/updates/"];
-    [manager setLocalPath:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"/Contents/Resources/Updates/"]];
-    [manager setName:@"AudioXplorer"];
+    // ARUpdateManager removed; auto-updater framework was 32-bit-only.
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
@@ -160,8 +162,6 @@ static NSMutableArray *_staticObjectArray = NULL;
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-    [[ARUpdateManager sharedManager] terminate];
-
     [[AudioDialogPrefs shared] save];
     [[AudioDeviceManager shared] release];
     [_staticObjectArray release];
@@ -179,7 +179,7 @@ static NSMutableArray *_staticObjectArray = NULL;
 
 - (IBAction)checkForUpdate:(id)sender
 {
-    [[ARUpdateManager sharedManager] checkForUpdates:sender];
+    // Auto-update removed; ARCheckForUpdates.framework was 32-bit-only with no source.
 }
 
 - (IBAction)downloadPlugIns:(id)sender

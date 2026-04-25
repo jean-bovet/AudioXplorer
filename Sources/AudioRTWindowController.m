@@ -436,42 +436,30 @@ static NSString*	ChannelToolbarItemIdentifier = @"Channel Item Identifier";
 
     if ([itemIdent isEqual: EnableToolbarItemIdentifier])
     {
-        NSSize itemSize = [mEnableToolbarView frame].size;
-        
-		// Set up the standard properties 
+		// Set up the standard properties
 		[toolbarItem setLabel: NSLocalizedString(@"", nil)];
 		[toolbarItem setPaletteLabel: NSLocalizedString(@"Enable Button", nil)];
-		
-		// Use a custom view 
+
+		// Use a custom view
 		[toolbarItem setView:mEnableToolbarView];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
 		} else if ([itemIdent isEqual: PlaythruToolbarItemIdentifier])
 		{
-			NSSize itemSize = [mPlaythruToolbarView frame].size;
-			
-		// Set up the standard properties 
+		// Set up the standard properties
 		[toolbarItem setLabel: NSLocalizedString(@"", nil)];
 		[toolbarItem setPaletteLabel: NSLocalizedString(@"Playthru Button", nil)];
-		
-		// Use a custom view 
+
+		// Use a custom view
 		[toolbarItem setView:mPlaythruToolbarView];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
     } else if ([itemIdent isEqual: IntervalToolbarItemIdentifier])
     {
-        NSSize itemSize = [mIntervalToolbarView frame].size;
-			
-		// Set up the standard properties 
+		// Set up the standard properties
 		[toolbarItem setLabel: NSLocalizedString(@"", nil)];
 		[toolbarItem setPaletteLabel: NSLocalizedString(@"Interval PopUp", nil)];
-		
-		// Use a custom view 
-		[toolbarItem setView:mIntervalToolbarView];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
 
-		// Create the custom menu 
+		// Use a custom view
+		[toolbarItem setView:mIntervalToolbarView];
+
+		// Create the custom menu
 		NSMenu *submenu=[[[NSMenu alloc] init] autorelease];
 		NSArray *items = [[mIntervalPopUp menu] itemArray];
 		NSEnumerator *enumerator = [items objectEnumerator];
@@ -491,16 +479,12 @@ static NSString*	ChannelToolbarItemIdentifier = @"Channel Item Identifier";
 		[toolbarItem setMenuFormRepresentation:menuFormRep];
     } else if ([itemIdent isEqual: ResolutionToolbarItemIdentifier])
     {
-        NSSize itemSize = [mResolutionToolbarView frame].size;
-			
-		// Set up the standard properties 
+		// Set up the standard properties
 		[toolbarItem setLabel: NSLocalizedString(@"", nil)];
 		[toolbarItem setPaletteLabel: NSLocalizedString(@"Resolution PopUp", nil)];
-		
-		// Use a custom view 
+
+		// Use a custom view
 		[toolbarItem setView:mResolutionToolbarView];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
 		
 		// Create the custom menu 
 		NSMenu *submenu=[[[NSMenu alloc] init] autorelease];
@@ -522,16 +506,12 @@ static NSString*	ChannelToolbarItemIdentifier = @"Channel Item Identifier";
 		[toolbarItem setMenuFormRepresentation:menuFormRep];
     } else if ([itemIdent isEqual: ChannelToolbarItemIdentifier])
     {
-        NSSize itemSize = [mChannelToolbarView frame].size;
-        
-		// Set up the standard properties 
+		// Set up the standard properties
 		[toolbarItem setLabel: NSLocalizedString(@"", nil)];
 		[toolbarItem setPaletteLabel: NSLocalizedString(@"Channel PopUp", nil)];
-		
-		// Use a custom view 
+
+		// Use a custom view
 		[toolbarItem setView:mChannelToolbarView];
-		[toolbarItem setMinSize:itemSize];
-		[toolbarItem setMaxSize:itemSize];
 
 		// Create the custom menu 
 		NSMenu *submenu=[[[NSMenu alloc] init] autorelease];

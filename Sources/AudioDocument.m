@@ -35,6 +35,11 @@
 
 @implementation AudioDocument
 
++ (BOOL)autosavesInPlace
+{
+    return NO;  // Preserve explicit File > Save semantics for .adx documents.
+}
+
 - (id)init
 {
     self = [super init];

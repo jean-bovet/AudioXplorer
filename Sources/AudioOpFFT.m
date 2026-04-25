@@ -121,17 +121,17 @@
             }
                         
             // Prepare the odd-even array from temporal data
-            ctoz((COMPLEX*)temporaryAudioData, 2, &complexSplit, 1, theFFT_N2);
-            
+            vDSP_ctoz((COMPLEX*)temporaryAudioData, 2, &complexSplit, 1, theFFT_N2);
+
             // FFT of the temporal data
-            fft_zrip([operator weightBufferForLog2:theFFT_log2],
+            vDSP_fft_zrip([operator weightBufferForLog2:theFFT_log2],
                         &complexSplit, 1, theFFT_log2, FFT_FORWARD);
-            
+
             // Scale
             FLOAT scale = 1.0/theFFT_N2;
-            
-            vsmul(complexSplit.realp, 1, &scale, complexSplit.realp, 1, theFFT_N2);
-            vsmul(complexSplit.imagp, 1, &scale, complexSplit.imagp, 1, theFFT_N2);
+
+            vDSP_vsmul(complexSplit.realp, 1, &scale, complexSplit.realp, 1, theFFT_N2);
+            vDSP_vsmul(complexSplit.imagp, 1, &scale, complexSplit.imagp, 1, theFFT_N2);
             
             if([audioDataFFT allocateBufferForChannel:channel])
             {        

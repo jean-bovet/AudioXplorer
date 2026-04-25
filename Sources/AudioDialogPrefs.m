@@ -37,7 +37,6 @@
 #import "AudioUtilities.h"
 #import "AudioInspectorController.h"
 #import "AudioApp.h"
-#import <ARCheckForUpdates/ARCheckForUpdates.h>
 
 #define AudioDefaultsUseToolTipsKey @"AXUseToolTips"
 #define AudioDefaultsUseVisualAnimationKey @"AXVisualAnimation"
@@ -200,7 +199,7 @@
 
 - (void)awakeFromNib
 {
-    [[ARUpdateManager sharedManager] insertPreferencesIntoView:[mVersionCheckerBox contentView]];
+    // ARUpdateManager prefs pane removed; mVersionCheckerBox is left empty.
 
 	[self setupToolbar];
     [self createViewTabGUI];

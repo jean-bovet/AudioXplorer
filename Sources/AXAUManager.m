@@ -61,31 +61,25 @@
 }
 
 - (void)findComponentsOfType:(OSType)type
-{    
-    ComponentDescription desc;
+{
+    AudioComponentDescription desc = {0};
     desc.componentType = type;
-    desc.componentSubType = 0;
-    desc.componentManufacturer = 0;
-    desc.componentFlags = 0;
-    desc.componentFlagsMask = 0;
-    
-    Component theComponent = FindNextComponent (NULL, &desc);
+
+    AudioComponent theComponent = AudioComponentFindNext(NULL, &desc);
     while (theComponent != NULL)
     {
-        ComponentDescription found;
-        Handle hdl = NewHandle(10);
-        GetComponentInfo(theComponent, &found, hdl, 0, 0);
-        
-        char * c = *hdl;
-        c++;
-        NSString *name = [NSString stringWithCString:c length:GetHandleSize(hdl)-1];
-        DisposeHandle(hdl);
-        
+        AudioComponentDescription found;
+        AudioComponentGetDescription(theComponent, &found);
+
+        CFStringRef cfName = NULL;
+        AudioComponentCopyName(theComponent, &cfName);
+        NSString *name = cfName ? [(NSString *)cfName autorelease] : @"(unnamed)";
+
         AXAUComponent *component = [AXAUComponent componentWithDescription:found name:name];
         [mComponentArray addObject:component];
-            
-        theComponent = FindNextComponent(theComponent, &desc);
-    }    
+
+        theComponent = AudioComponentFindNext(theComponent, &desc);
+    }
 }
 
 - (void)updateComponentTitles

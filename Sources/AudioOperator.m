@@ -137,7 +137,7 @@ SHORT gFFTWeightBufferLog2 = 0;
 
 - (void)dealloc
 {
-    if(mFFTWeightBuffer) destroy_fftsetup(mFFTWeightBuffer);
+    if(mFFTWeightBuffer) vDSP_destroy_fftsetup(mFFTWeightBuffer);
 
     [mWindowFunctionTitleArray release];
     [mWindowFunctionIDArray release];
@@ -162,7 +162,7 @@ SHORT gFFTWeightBufferLog2 = 0;
         if(mFFTWeightBuffer)
             free(mFFTWeightBuffer);
             
-        mFFTWeightBuffer = create_fftsetup(mFFTWeightBufferLog2, FFT_RADIX2);
+        mFFTWeightBuffer = vDSP_create_fftsetup(mFFTWeightBufferLog2, FFT_RADIX2);
     }
     
     return mFFTWeightBuffer;
