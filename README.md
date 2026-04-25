@@ -2,7 +2,11 @@
 
 AudioXplorer is a macOS sound‑analysis application originally developed by [Arizona Software](https://www.arizona-software.ch) between 2003 and 2009. It records, generates, imports and visualizes audio, and performs Fast Fourier Transform (FFT) and sonogram analysis both on recorded clips and live input.
 
-This repository is an archival snapshot of the version 1.3.2 source tree (released 8 September 2009, the Snow Leopard fix release). The application was made freeware in 2005 and re‑licensed under the BSD license in 2006.
+The 2009 source tree (version 1.3.2 — Snow Leopard fix release) was modernized in 2026 to build on current Xcode and run as a notarized arm64 binary on macOS 12 and later. The application is freeware under a BSD license (relicensed in 2006).
+
+## Download
+
+Latest release: [AudioXplorer 1.4](https://github.com/jean-bovet/AudioXplorer/releases/latest) — signed and notarized DMG. Future updates are delivered in‑app via Sparkle.
 
 ## What it does
 
@@ -43,7 +47,8 @@ Sources/                      ~150 Objective-C / Cocoa source files
   AIFF*.{h,m}                 AIFF reader / writer
   MainController.{h,m}        Top-level app controller
 ARFramework/                  In-tree helpers (ARDynamicMenu, ARNetwork)
-ARCheckForUpdates.framework/  Pre-built auto-update framework (binary)
+Frameworks/Sparkle.framework/ Vendored Sparkle 2 auto-update framework
+AudioXplorer.entitlements     Hardened-runtime entitlements
 English.lproj/                Nibs, Localizable.strings, RTF help, Tips.xml
 French.lproj/, Italian.lproj/ Localizations
 Images/                       App and document icons, custom cursors, toolbar art
@@ -52,31 +57,32 @@ Plug-ins (AX)/                Plug-in SDK and three sample plug-ins
   AXPlugIns/                  Single-controller sample
   SinglePlugIn/               Minimal sample
   MultiplePlugIn/             Multi-controller sample
-Updates/                      UpdateInfo.plist served to ARCheckForUpdates
+docs/                         GitHub Pages source for the Sparkle appcast
+scripts/release.sh            Build, sign, notarize, package DMG, refresh appcast
+scripts/sparkle/              Sparkle CLI tools (generate_appcast, sign_update, generate_keys)
 ```
 
 ## Building
 
-The project targets the toolchain that shipped around macOS 10.5–10.6 (Xcode 3) and uses Carbon/Cocoa APIs and Objective‑C frameworks that have since been deprecated or removed (e.g. older `NSNibLoading` patterns, Carbon‑only APIs, the `.nib` format used by Interface Builder 3, the bundled `ARCheckForUpdates.framework` PowerPC/i386 binary). It is **not expected to build out of the box on modern Xcode / Apple Silicon** without porting work.
-
-To open the project on a vintage system:
+Requires Xcode 14+ and macOS 12+. Open the project and build the `AudioXplorer` scheme:
 
 ```
 open AudioXplorer.xcodeproj
 ```
 
-The default scheme is `AudioXplorer` and the build product is `AudioXplorer.app`.
+To produce a signed and notarized DMG for distribution, see `scripts/release.sh` (requires a Developer ID Application certificate and a `notarytool` keychain profile).
 
 ## License
 
-BSD 2‑clause (with non‑endorsement clause). See the header in `Sources/AudioVersions.h` and `main.m` for the canonical text. Copyright © 2003–2009 Arizona Software.
+BSD 3‑clause. See [`LICENSE`](LICENSE) for the canonical text. Copyright © 2003–2009 Arizona Software.
 
 ## Status
 
-Discontinued. This repository exists to preserve the source for historical reference; there is no active maintenance, issue tracking, or planned releases.
+Maintained on a low cadence as a personal project. The 2026 modernization restored buildability on current Xcode/Apple Silicon and added a self-update mechanism via Sparkle. Issues and PRs are welcome but maintenance is best‑effort.
 
 ## Version history (excerpt)
 
+- **1.4** (2026‑04‑25) — modernized for Xcode 26 / arm64 / macOS 12+; Developer ID signed and notarized; Sparkle 2 auto‑updates
 - **1.3.2** (2009‑09‑08) — Snow Leopard compatibility fixes
 - **1.3.1** (2006‑10‑07) — fix: launch on Macs without an input device
 - **1.3** (2006‑09‑24) — re‑licensed BSD; Universal Binary (PPC/Intel)

@@ -90,7 +90,7 @@ xcrun stapler staple "$DMG_PATH"
 xcrun stapler validate "$DMG_PATH"
 spctl --assess --type open --context context:primary-signature --verbose "$DMG_PATH" || true
 
-GENERATE_APPCAST="$PROJECT_DIR/Frameworks/Sparkle.framework/Versions/B/Resources/generate_appcast"
+GENERATE_APPCAST="$PROJECT_DIR/scripts/sparkle/generate_appcast"
 DOCS_DIR="$PROJECT_DIR/docs"
 if [[ -x "$GENERATE_APPCAST" ]]; then
     echo "==> Generating appcast"
