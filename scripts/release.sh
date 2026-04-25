@@ -90,5 +90,19 @@ xcrun stapler staple "$DMG_PATH"
 xcrun stapler validate "$DMG_PATH"
 spctl --assess --type open --context context:primary-signature --verbose "$DMG_PATH" || true
 
+GENERATE_APPCAST="$PROJECT_DIR/Frameworks/Sparkle.framework/Versions/B/Resources/generate_appcast"
+DOCS_DIR="$PROJECT_DIR/docs"
+if [[ -x "$GENERATE_APPCAST" ]]; then
+    echo "==> Generating appcast"
+    mkdir -p "$DOCS_DIR"
+    "$GENERATE_APPCAST" "$DIST_DIR" \
+        --download-url-prefix "https://github.com/jean-bovet/AudioXplorer/releases/download/v$VERSION/" \
+        -o "$DOCS_DIR/appcast.xml"
+    echo "Appcast written to $DOCS_DIR/appcast.xml"
+    echo "Commit and push docs/appcast.xml after the GitHub release is published."
+else
+    echo "warning: $GENERATE_APPCAST not found, skipping appcast generation" >&2
+fi
+
 echo ""
 echo "Done: $DMG_PATH"

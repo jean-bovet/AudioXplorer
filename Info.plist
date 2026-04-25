@@ -51,5 +51,11 @@
 	<string>AudioXplorer records and analyzes audio from the selected input device.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://jean-bovet.github.io/AudioXplorer/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>ijYZbNO2D7RbgXYIWrGejviM8zBBc4A/b0b2KbAKQx8=</string>
 </dict>
 </plist>

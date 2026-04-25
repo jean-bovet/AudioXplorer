@@ -97,7 +97,10 @@ static NSMutableArray *_staticObjectArray = NULL;
 
 - (void)initVersionChecker
 {
-    // ARUpdateManager removed; auto-updater framework was 32-bit-only.
+    self.updaterController = [[SPUStandardUpdaterController alloc]
+        initWithStartingUpdater:YES
+                updaterDelegate:nil
+             userDriverDelegate:nil];
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
@@ -179,7 +182,7 @@ static NSMutableArray *_staticObjectArray = NULL;
 
 - (IBAction)checkForUpdate:(id)sender
 {
-    // Auto-update removed; ARCheckForUpdates.framework was 32-bit-only with no source.
+    [self.updaterController checkForUpdates:sender];
 }
 
 - (IBAction)downloadPlugIns:(id)sender

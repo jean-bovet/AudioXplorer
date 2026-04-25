@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A0C0001000000000000000B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0C0001000000000000000A /* Sparkle.framework */; };
+		5A0C0001000000000000000C /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0C0001000000000000000A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A708CE9F0AD8375C0070C1B0 /* ToDo.txt in Resources */ = {isa = PBXBuildFile; fileRef = A708CE9E0AD8375C0070C1B0 /* ToDo.txt */; };
 		A717781E0AC76749009E1E0B /* ChCurvusProAXPlugIns.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = A717780A0AC76747009E1E0B /* ChCurvusProAXPlugIns.bundle */; };
 		A727C30B07139C7400CA2C30 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = A727C30A07139C7400CA2C30 /* MainMenu.nib */; };
@@ -149,7 +151,6 @@
 		A7C6E35605E1171A0059284A /* CursorHand.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7992B00045097590053257D /* CursorHand.tiff */; };
 		A7C6E35C05E1171A0059284A /* Tips.xml in Resources */ = {isa = PBXBuildFile; fileRef = A7982652046B9C100053249A /* Tips.xml */; };
 		A7C6E35F05E1171A0059284A /* ARProgressPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = A7B805C304AA6C3D00A8021B /* ARProgressPanel.nib */; };
-		A7C6E36505E1171A0059284A /* Updates in Resources */ = {isa = PBXBuildFile; fileRef = A7C6E2D105E116F10059284A /* Updates */; };
 		A7C6E36705E1171A0059284A /* AudioDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* AudioDocument.m */; settings = {ATTRIBUTES = (); }; };
 		A7C6E36805E1171A0059284A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		A7C6E36905E1171A0059284A /* AudioDataAmplitude.m in Sources */ = {isa = PBXBuildFile; fileRef = F58F6258035E90FE018C2097 /* AudioDataAmplitude.m */; };
@@ -257,13 +258,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A7C6E3C505E1171A0059284A /* CopyFiles */ = {
+		A7C6E3C505E1171A0059284A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5A0C0001000000000000000C /* Sparkle.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A7C6E3C705E1171A0059284A /* CopyFiles */ = {
@@ -279,6 +282,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A0C0001000000000000000A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		2A37F4ACFDCFA73011CA2CEA /* AudioDocument.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AudioDocument.m; path = Sources/AudioDocument.m; sourceTree = "<group>"; };
 		2A37F4AEFDCFA73011CA2CEA /* AudioDocument.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AudioDocument.h; path = Sources/AudioDocument.h; sourceTree = "<group>"; };
@@ -469,7 +473,6 @@
 		A7B805C404AA6C3D00A8021B /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ARProgressPanel.nib; sourceTree = "<group>"; };
 		A7B8FCD404AA599E00A8021B /* ARProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARProgressPanel.h; path = Sources/ARProgressPanel.h; sourceTree = "<group>"; };
 		A7B8FCD504AA599E00A8021B /* ARProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARProgressPanel.m; path = Sources/ARProgressPanel.m; sourceTree = "<group>"; };
-		A7C6E2D105E116F10059284A /* Updates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Updates; sourceTree = "<group>"; };
 		A7C6E3CB05E1171B0059284A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7C6E3CC05E1171B0059284A /* AudioXplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioXplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C7D0CC045D64B00053257D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/AudioRTWindow.nib; sourceTree = "<group>"; };
@@ -545,6 +548,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A0C0001000000000000000B /* Sparkle.framework in Frameworks */,
 				A7C6E3BE05E1171A0059284A /* Cocoa.framework in Frameworks */,
 				A7C6E3BF05E1171A0059284A /* Accelerate.framework in Frameworks */,
 				A7C6E3C005E1171A0059284A /* CoreAudio.framework in Frameworks */,
@@ -561,6 +565,7 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A0C0001000000000000000A /* Sparkle.framework */,
 				A7DA748904794150005327CD /* AudioUnit.framework */,
 				A7DA748B0479415C005327CD /* Carbon.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
@@ -628,7 +633,6 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A7C6E2D105E116F10059284A /* Updates */,
 				A77140E004424EB300F7D27E /* Icons */,
 				A7C6E3CB05E1171B0059284A /* Info.plist */,
 				A7997EEA040F3692005326DA /* Localizable.strings */,
@@ -1190,7 +1194,7 @@
 				A7C6E33905E1171A0059284A /* Resources */,
 				A7C6E36605E1171A0059284A /* Sources */,
 				A7C6E3BC05E1171A0059284A /* Frameworks */,
-				A7C6E3C505E1171A0059284A /* CopyFiles */,
+				A7C6E3C505E1171A0059284A /* Embed Frameworks */,
 				A7C6E3C705E1171A0059284A /* CopyFiles */,
 				AA00112200000000000000B1 /* ShellScript */,
 			);
@@ -1297,7 +1301,6 @@
 				A727C32307139C7A00CA2C30 /* AudioPlugIns.nib in Resources */,
 				A727C34E07139CA600CA2C30 /* CarbonWindow.nib in Resources */,
 				A7C6E35F05E1171A0059284A /* ARProgressPanel.nib in Resources */,
-				A7C6E36505E1171A0059284A /* Updates in Resources */,
 				A7CB0D24071CEE3B00FE693E /* tb_devices.icns in Resources */,
 				A7CB0D25071CEE3B00FE693E /* tb_rt.icns in Resources */,
 				A7CB0D26071CEE3B00FE693E /* tb_general.icns in Resources */,
@@ -1715,16 +1718,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = AudioXplorer.entitlements;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				PRODUCT_NAME = AudioXplorer;
 				WARNING_CFLAGS = (
@@ -1741,14 +1750,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = AudioXplorer.entitlements;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				PRODUCT_NAME = AudioXplorer;
 				WARNING_CFLAGS = (
@@ -1765,13 +1780,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = AudioXplorer.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				PRODUCT_NAME = AudioXplorer;
 				WARNING_CFLAGS = (

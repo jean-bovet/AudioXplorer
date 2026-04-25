@@ -31,25 +31,28 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import <Sparkle/Sparkle.h>
 
 @interface AudioApp : NSObject
 {
     IBOutlet NSPanel *mFirstLaunchPanel;
     IBOutlet NSPanel *mHowToInstalPlugInsPanel;
-    
+
     IBOutlet NSMatrix *mOpenActionButtonMatrix;
-    
+
     IBOutlet NSMenu *mEffectsMenu;
     IBOutlet NSMenu *mAboutMenu;
-    
+
     NSPanel *mLoadingWindow;
     IBOutlet NSView *mLoadingView;
     IBOutlet NSTextField *mAXVersionTextField;
     IBOutlet NSTextField *mLoadingPromptTextField;
     IBOutlet NSProgressIndicator *mLoadingProgressIndicator;
 
-    IBOutlet NSMenu *mHelpMenu;    
+    IBOutlet NSMenu *mHelpMenu;
 }
+
+@property (nonatomic, strong) SPUStandardUpdaterController *updaterController;
 
 - (IBAction)checkForUpdate:(id)sender;
 - (IBAction)downloadPlugIns:(id)sender;
