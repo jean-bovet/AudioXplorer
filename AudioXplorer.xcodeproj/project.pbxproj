@@ -10,7 +10,7 @@
 		5A0C0001000000000000000B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0C0001000000000000000A /* Sparkle.framework */; };
 		5A0C0001000000000000000C /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0C0001000000000000000A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A708CE9F0AD8375C0070C1B0 /* ToDo.txt in Resources */ = {isa = PBXBuildFile; fileRef = A708CE9E0AD8375C0070C1B0 /* ToDo.txt */; };
-		A717781E0AC76749009E1E0B /* ChCurvusProAXPlugIns.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = A717780A0AC76747009E1E0B /* ChCurvusProAXPlugIns.bundle */; };
+		A717781E0AC76749009E1E0B /* ChCurvusProAXPlugIns.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = DCF2B8810A5B902500969481 /* ChCurvusProAXPlugIns.bundle */; };
 		A727C30B07139C7400CA2C30 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = A727C30A07139C7400CA2C30 /* MainMenu.nib */; };
 		A727C30D07139C7400CA2C30 /* AudioExchange.nib in Resources */ = {isa = PBXBuildFile; fileRef = A727C30C07139C7400CA2C30 /* AudioExchange.nib */; };
 		A727C30F07139C7400CA2C30 /* AudioUtilities.nib in Resources */ = {isa = PBXBuildFile; fileRef = A727C30E07139C7400CA2C30 /* AudioUtilities.nib */; };
@@ -296,7 +296,6 @@
 		A705725E05B27D2C001B9646 /* French */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = French; path = French.lproj/ARProgressPanel.nib; sourceTree = "<group>"; };
 		A705725F05B27D38001B9646 /* Italian */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Italian; path = Italian.lproj/ARProgressPanel.nib; sourceTree = "<group>"; };
 		A708CE9E0AD8375C0070C1B0 /* ToDo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToDo.txt; sourceTree = "<group>"; };
-		A717780A0AC76747009E1E0B /* ChCurvusProAXPlugIns.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ChCurvusProAXPlugIns.bundle; path = "Plug-ins (AX)/AXPlugIns/build/Deployment/ChCurvusProAXPlugIns.bundle"; sourceTree = "<group>"; };
 		A7271E6B03ED4494001A4B10 /* AudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioRecorder.h; path = Sources/AudioRecorder.h; sourceTree = "<group>"; };
 		A7271E6C03ED4494001A4B10 /* AudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioRecorder.m; path = Sources/AudioRecorder.m; sourceTree = "<group>"; };
 		A7271E7603ED529E001A4B10 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/AudioPrefs.nib; sourceTree = "<group>"; };
@@ -793,7 +792,6 @@
 			isa = PBXGroup;
 			children = (
 				A76E95A309202BD500005632 /* AXPlugInHeader.h */,
-				A717780A0AC76747009E1E0B /* ChCurvusProAXPlugIns.bundle */,
 			);
 			name = "Plug-ins";
 			sourceTree = "<group>";
