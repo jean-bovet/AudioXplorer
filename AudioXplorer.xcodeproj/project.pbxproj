@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A708CE9F0AD8375C0070C1B0 /* ToDo.txt in Resources */ = {isa = PBXBuildFile; fileRef = A708CE9E0AD8375C0070C1B0 /* ToDo.txt */; };
-		A717780D0AC76747009E1E0B /* ChCurvusProAXPlugIns.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A717780A0AC76747009E1E0B /* ChCurvusProAXPlugIns.bundle */; };
 		A717781E0AC76749009E1E0B /* ChCurvusProAXPlugIns.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = A717780A0AC76747009E1E0B /* ChCurvusProAXPlugIns.bundle */; };
 		A727C30B07139C7400CA2C30 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = A727C30A07139C7400CA2C30 /* MainMenu.nib */; };
 		A727C30D07139C7400CA2C30 /* AudioExchange.nib in Resources */ = {isa = PBXBuildFile; fileRef = A727C30C07139C7400CA2C30 /* AudioExchange.nib */; };
@@ -1305,7 +1304,6 @@
 				A7CB0D27071CEE3B00FE693E /* tb_views.icns in Resources */,
 				A7CB0D28071CEE3B00FE693E /* tb_update.tiff in Resources */,
 				A7CB0D60071CF0A200FE693E /* tb_effects.tiff in Resources */,
-				A717780D0AC76747009E1E0B /* ChCurvusProAXPlugIns.bundle in Resources */,
 				A708CE9F0AD8375C0070C1B0 /* ToDo.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
