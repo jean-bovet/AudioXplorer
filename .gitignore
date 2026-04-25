@@ -4,6 +4,7 @@
 # Xcode build output
 build/
 DerivedData/
+dist/
 
 # Xcode per-user state
 *.pbxuser
