@@ -33,7 +33,7 @@
 
 @implementation AudioSplitView
 
-- (float)dividerThickness
+- (CGFloat)dividerThickness
 {
     return 5.0;
 }
