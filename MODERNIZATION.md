@@ -43,7 +43,7 @@ Call-site removals in `Sources/AudioApp.m` and `Sources/AudioDialogPrefs.m`:
 - `[[ARUpdateManager sharedManager] terminate]` in `-applicationWillTerminate:` deleted.
 - `-initVersionChecker` (called from `-applicationWillFinishLaunching:`) body emptied.
 
-The `ARCheckForUpdates.framework/` directory on disk was left alone — only the project references were removed.
+The `ARCheckForUpdates.framework/` directory on disk was initially left alone — only the project references were removed. It was deleted entirely later when [Sparkle 2 auto-update](RELEASING.md) was integrated for the 1.4 release.
 
 ## 3. Audio importer rewritten on ExtAudioFile
 

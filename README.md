@@ -34,7 +34,7 @@ Other features:
 ```
 main.m                        NSApplicationMain entry point
 Info.plist                    Bundle metadata (CFBundleIdentifier ch.curvuspro.audioxplorer)
-AudioXplorer.xcodeproj/       Xcode project (circa Xcode 3, 2009)
+AudioXplorer.xcodeproj/       Xcode project (originally Xcode 3, modernized 2026)
 Sources/                      ~150 Objective-C / Cocoa source files
   CoreAudio/                  Device, stream, mixer and ring-buffer wrappers
   AudioData*.{h,m}            Amplitude / FFT / Sonogram / Trigger data models
@@ -64,7 +64,7 @@ scripts/sparkle/              Sparkle CLI tools (generate_appcast, sign_update, 
 
 ## Building
 
-Requires Xcode 14+ and macOS 12+. Open the project and build the `AudioXplorer` scheme:
+Last built with Xcode 26 on macOS 26. The app's deployment target is macOS 12. Open the project and build the `AudioXplorer` scheme:
 
 ```
 open AudioXplorer.xcodeproj
