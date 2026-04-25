@@ -117,8 +117,6 @@
 
     NSData *data = [view viewDataAsPDF];
     [pb setData:data forType:NSPDFPboardType];
-    
-    [data writeToFile:@"/tmp/audiox.pdf" atomically:YES];
 }
 
 + (void)exportDataToClipboardAsEPSFromView:(AudioView*)view
@@ -128,8 +126,6 @@
     
     NSData *data = [view viewDataAsEPS];
     [pb setData:data forType:NSPostScriptPboardType];
-    
-    [data writeToFile:@"/tmp/audiox.eps" atomically:YES];
 }
 
 @end

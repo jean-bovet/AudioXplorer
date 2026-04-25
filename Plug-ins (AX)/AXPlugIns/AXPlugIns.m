@@ -87,14 +87,14 @@
 
 - (NSString*)versionStringOfMethod:(NSString*)methodName
 {
-    return @"1.0, (c) 2003 Arizona";
+    return @"1.0";
 }
 
 // The authors string
 
 - (NSString*)authorsStringOfMethod:(NSString*)methodName
 {
-    return @"Jean Bovet";
+    return @"AudioXplorer";
 }
 
 // The description string
