@@ -102,8 +102,8 @@
 - (void)prepareForPrinting
 {
     NSRect r = [self realPaperRect:[self bounds]];
-    
-    int numberOfViews = [mViewArray count];
+
+    int numberOfViews = (int)[mViewArray count];
     float heightOfView = r.size.height/numberOfViews;
 
     [mImageArray removeAllObjects];
@@ -130,8 +130,8 @@
 - (void)drawRect:(NSRect)rect
 {
     NSRect r = [self realPaperRect:rect];
-    
-    int numberOfViews = [mViewArray count];
+
+    int numberOfViews = (int)[mViewArray count];
     float heightOfView = r.size.height/numberOfViews;
         
     int view;
@@ -151,7 +151,7 @@
 }
 
 // Return the drawing rectangle for a particular page number
-- (NSRect)rectForPage:(int)page {
+- (NSRect)rectForPage:(NSInteger)page {
     // Obtain the print info object for the current operation
     NSPrintInfo *pi = [[NSPrintOperation currentOperation] printInfo];
 

@@ -102,7 +102,7 @@
 + (BOOL)askUserForGain:(float*)gain
 {
     AXPlugInsGainController *panel = [[AXPlugInsGainController alloc] init];
-    int code = [NSApp runModalForWindow:[panel window]];
+    int code = (int)[NSApp runModalForWindow:[panel window]];
     if(code == 1)
         *gain = [panel gain];
     [panel release];

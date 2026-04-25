@@ -32,6 +32,7 @@
 #import "AudioConstants.h"
 #import "AudioDataWrapper.h"
 #import "AudioDataFFT.h"
+#import "AudioDataSono.h"
 #import "AudioView.h"
 #import "AudioView+Categories.h"
 #import "AudioNotifications.h"
@@ -485,7 +486,7 @@
         [mView setVisualRangeForXAxisFrom:[self visualMinX] to:[self visualMaxX]];
         [mView setVisualRangeForYAxisFrom:[self visualMinY] to:[self visualMaxY]];
 
-        if([mData kind]==KIND_SONO)
+        if([(id<DataSourceProtocol>)mData kind]==KIND_SONO)
         {
             [mView setRangeForZAxisFrom:0 to:[mData maxZOfChannel:LEFT_CHANNEL]];
             [mView setVisualRangeForZAxisFrom:0 to:[mData maxZOfChannel:LEFT_CHANNEL]];
@@ -598,7 +599,7 @@
             size = [mData maxIndex]*[self numberOfChannels]*4;
             break;
         case KIND_SONO:
-            size = (ULONG)[mData maxFFT]*(ULONG)[mData fftWindowWidth]*0.5*4;
+            size = [(AudioDataSono*)mData maxFFT]*[(AudioDataSono*)mData fftWindowWidth]*0.5*4;
             break;
     }
     size /= 1000;
@@ -617,7 +618,7 @@
             value = [mData xAxisUnitFactorForRange:res]*res;
             break;
         case KIND_SONO:
-            res = ([mData maxXOfChannel:LEFT_CHANNEL]-[mData minXOfChannel:LEFT_CHANNEL])/(ULONG)[mData maxFFT];
+            res = ([mData maxXOfChannel:LEFT_CHANNEL]-[mData minXOfChannel:LEFT_CHANNEL])/[(AudioDataSono*)mData maxFFT];
             unit = [mData xAxisUnitForRange:res];
             value = [mData xAxisUnitFactorForRange:res]*res;
             break;
@@ -642,7 +643,7 @@
             return @"-"; // Pas de signification
             break;
         case KIND_SONO:
-            res = (float)[mData maxYOfChannel:LEFT_CHANNEL]/((ULONG)[mData fftWindowWidth]*0.5);
+            res = (float)[mData maxYOfChannel:LEFT_CHANNEL]/([(AudioDataSono*)mData fftWindowWidth]*0.5);
             unit = [mData yAxisUnitForRange:res];
             value = [mData yAxisUnitFactorForRange:res]*res;
             break;
@@ -1011,7 +1012,7 @@
 - (NSString*)yAxisUnit { return [mData yAxisUnit]; }
 - (NSString*)xAxisName { return [mData xAxisName]; }
 - (NSString*)yAxisName { return [mData yAxisName]; }
-- (SHORT)kind { return [mData kind]; }
+- (SHORT)kind { return [(id<DataSourceProtocol>)mData kind]; }
 - (FLOAT)yValueAtX:(FLOAT)x channel:(SHORT)channel { return [mData yValueAtX:x channel:channel]; }
 
 - (FLOAT)minXOfChannel:(SHORT)channel { return [mData minXOfChannel:channel]; }
@@ -1122,7 +1123,7 @@
         return 0;
 }
 
-- (void)renderImage { [mData createImage]; }
+- (void)renderImage { [(AudioDataSono*)mData createImage]; }
 - (CGImageRef)imageQ2D { return [mData imageQ2D]; }
 
 @end

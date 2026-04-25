@@ -54,7 +54,7 @@
     [cell setTitle:title];
 }
 
-- (id)dataCellForRow:(int)row
+- (id)dataCellForRow:(NSInteger)row
 {
     switch(mType) {
         case COLUMN_CHECKBOX:

@@ -206,7 +206,7 @@
     }
 
     if(PRINT_LOG)
-        NSLog(@"Sound data size %d", soundDataSize);
+        NSLog(@"Sound data size %ld", (long)soundDataSize);
     
     soundDataSize /= numChannels;
     
@@ -258,11 +258,11 @@
                 break;
             case 32:
             {
-                unsigned char a, b, c, d;
+                unsigned char a, b, c;
                 a = *soundDataBuffer++;
                 b = *soundDataBuffer++;
                 c = *soundDataBuffer++;
-                d = *soundDataBuffer++;
+                soundDataBuffer++;
                 long bit32 = a * 0x300 + b * 0x200 + c * 0x100 + b;
                 value = (float)(bit32/2147483648UL);
             }

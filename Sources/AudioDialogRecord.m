@@ -129,7 +129,7 @@
     mParentWindow = sender;
     mIsASheet = NO;
     [self performOpenOperationWithDefaultName:defaultName];
-    [self sheetEnd:[self window] returnCode:[[NSApplication sharedApplication] runModalForWindow:[self window]] contextInfo:NULL];
+    [self sheetEnd:[self window] returnCode:(int)[[NSApplication sharedApplication] runModalForWindow:[self window]] contextInfo:NULL];
 }
 
 - (void)openAsSheet:(id)sender defaultName:(NSString*)defaultName

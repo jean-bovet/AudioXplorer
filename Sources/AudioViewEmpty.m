@@ -65,11 +65,7 @@
 }
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
-    NSPasteboard *pboard;
-    NSDragOperation sourceDragMask;
-
-    sourceDragMask = [sender draggingSourceOperationMask];
-    pboard = [sender draggingPasteboard];
+    NSPasteboard *pboard = [sender draggingPasteboard];
 
     [self setNeedsDisplay:YES];
 
@@ -91,19 +87,15 @@
 }
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
-    NSPasteboard *pboard;
-    NSDragOperation sourceDragMask;
-
     mIsTarget = NO;
     [self setNeedsDisplay:YES];
 
-    sourceDragMask = [sender draggingSourceOperationMask];
-    pboard = [sender draggingPasteboard];
+    NSPasteboard *pboard = [sender draggingPasteboard];
     
     return [AudioView performDrag:pboard fromView:self];
 }
 
-- (unsigned long)viewID
+- (ULONG)viewID
 {
     return EMPTY_VIEW_ID;
 }

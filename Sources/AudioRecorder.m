@@ -78,7 +78,7 @@ static OSStatus inputIOProc (AudioDeviceID  inDevice,
 			
 			AudioDataAmplitude *audioData = audioRecorder->mCurrentAudioData;
 			if(![audioData addStereoRawDataPtr:[playthruDevice convertedBuffer]
-										ofSize:[playthruDevice convertedBufferSize]
+										ofSize:(ULONG)[playthruDevice convertedBufferSize]
 									 inChannel:audioRecorder->mRecordChannel])
 			{
 				[audioData setStatusFlag:NONE];			
@@ -101,9 +101,8 @@ static OSStatus outputIOProc (AudioDeviceID  inDevice,
 							 AudioBufferList*  outOutputData,
 							 const AudioTimeStamp* inOutputTime, 
 							 void* userData)
-{    
-#warning send playthru only to front real-time window
-	
+{
+    // TODO: send playthru only to front real-time window
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	@try {
 		unsigned short recorder;

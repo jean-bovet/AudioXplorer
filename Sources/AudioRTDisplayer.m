@@ -612,11 +612,12 @@
 
 - (IBAction)startRTMonitoring:(id)sender
 {    
-    if(mMonitoring)
+    if(mMonitoring) {
         if(mPaused)
             [self resumeMonitoring];
         else
             return;
+    }
         
     if(mAmplitudeView)
     {

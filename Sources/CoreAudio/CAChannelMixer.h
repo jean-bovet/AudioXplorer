@@ -31,7 +31,7 @@
 
 #import "CAChannelMixerArray.h"
 
-@interface CAChannelMixer : NSObject {
+@interface CAChannelMixer : NSObject <NSTableViewDataSource> {
 	NSRecursiveLock	*mLock;
 	
 	unsigned short mInputChannelCount;

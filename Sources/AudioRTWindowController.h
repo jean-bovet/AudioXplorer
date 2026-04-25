@@ -38,7 +38,7 @@
 @class AudioView3D;
 @class AudioRTDisplayer;
 
-@interface AudioRTWindowController : NSWindowController
+@interface AudioRTWindowController : NSWindowController <NSWindowDelegate, NSToolbarDelegate>
 {
     AudioRTDisplayer *mAudioRTDisplayer;
     AudioDialogFFTParameters *mFFTParametersPanel;

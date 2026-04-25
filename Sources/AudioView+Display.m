@@ -259,7 +259,7 @@
         {
             FLOAT time = min+step*n;
 
-            if(time>=mVisualDisplayedMinY && time<=mVisualDisplayedMaxY
+            if((time>=mVisualDisplayedMinY && time<=mVisualDisplayedMaxY)
             || fabs(mVisualDisplayedMaxY-time)<=1e-4) // To prevent rounding error after 4 digits
             {
                 if(axis)
@@ -303,7 +303,7 @@
         NSDictionary *attributes = [NSDictionary dictionaryWithObject:[self cursorColor]
                                     forKey:NSForegroundColorAttributeName];
     
-#warning added [self computeXRealValueFromXValue] to handle x-axis log
+        // [self computeXRealValueFromXValue] handles x-axis log
         NSString *labelString = [self composeCursorLabelStringForXValue:[self computeXRealValueFromXValue:x] yValue:y zValue:mCursor_Z];
     
         NSSize size = [labelString sizeWithAttributes:attributes];

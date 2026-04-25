@@ -187,7 +187,7 @@
     if(array)
     {
         [self setPageLayoutViewIDArray:[array objectAtIndex:0]];
-        mViewAbsoluteCount = [[array objectAtIndex:1] unsignedLongValue];
+        mViewAbsoluteCount = (ULONG)[[array objectAtIndex:1] unsignedLongValue];
         mPageLayoutID = [[array objectAtIndex:2] unsignedShortValue];
         mAudioViewListDisplayType = [[array objectAtIndex:3] unsignedShortValue];
     }
@@ -534,7 +534,7 @@
             return index;
     }
 
-    return NSNotFound;
+    return (int)NSNotFound;
 }
 
 // Returns the audio view for the corresponding view ID
@@ -888,7 +888,7 @@
     [self pageLayoutRemoveView:[wrapper view]];
         
     [[wrapper view] setSelect:NO];
-    int index = [mAudioDataWrapperArray indexOfObjectIdenticalTo:wrapper];
+    int index = (int)[mAudioDataWrapperArray indexOfObjectIdenticalTo:wrapper];
     if(index != NSNotFound)
     {
         if(mCurrentWrapper == wrapper)
@@ -1096,7 +1096,7 @@
     {
         NSBeginAlertSheet(NSLocalizedString(@"Unable to import data from file.", NULL),
                             NSLocalizedString(@"OK", NULL), NULL, NULL, [self window], self,
-                            NULL, NULL, NULL, [mAudioFileImporter errorMessage]);    
+                            NULL, NULL, NULL, @"%@", [mAudioFileImporter errorMessage]);
     }
     [mAudioFileImporter release];
 }
@@ -1113,7 +1113,7 @@
     {
         NSBeginAlertSheet(NSLocalizedString(@"An error has occured when trying to launch the importer process.", NULL),
                             NSLocalizedString(@"OK", NULL), NULL, NULL, [self window], self,
-                            NULL, NULL, NULL, [mAudioFileImporter errorMessage]); 
+                            NULL, NULL, NULL, @"%@", [mAudioFileImporter errorMessage]);
         [mAudioFileImporter release];
     }
 }
@@ -1504,7 +1504,7 @@
 
 - (void)flagsChanged:(NSEvent *)theEvent
 {
-    mLastModifierFlags = [theEvent modifierFlags];
+    mLastModifierFlags = (unsigned int)[theEvent modifierFlags];
     [[AudioEffectController shared] modifierChanged:mLastModifierFlags];
 }
 
@@ -1601,7 +1601,7 @@
 
 - (int)numberOfRowsInTableView:(NSTableView *)aTableView
 {
-    return [mAudioDataWrapperArray count];
+    return (int)[mAudioDataWrapperArray count];
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
@@ -1753,7 +1753,7 @@
     [[wrapper view] setAllowsPlayerhead:YES];
     [[wrapper view] setAllowsPlayback:YES];
     [[wrapper view] setAllowsSelection:YES];
-    if([data kind] == KIND_AMPLITUDE)
+    if([(id<DataSourceProtocol>)data kind] == KIND_AMPLITUDE)
         [data setTriggerState:NO];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:AudioViewHasUpdatedNotification object:view];

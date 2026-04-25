@@ -173,7 +173,7 @@
     AIFFCodec *codec = [[AIFFCodec alloc] init];
     [codec setExportDataProvider:self];
 	
-	#warning pourquoi pas 32 bits ? Paramétrable ?
+    // TODO: make export sample size configurable (16/32 bits)
     [codec setExportSampleSize:16];
 
     BOOL success = codec != NULL;
@@ -207,7 +207,7 @@
         [self autorelease];
 }
 
-+ (BOOL)canExportDataAsAIFF:(id)data
++ (BOOL)canExportDataAsAIFF:(id<DataSourceProtocol>)data
 {
     return [data kind] == KIND_AMPLITUDE;
 }

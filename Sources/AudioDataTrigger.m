@@ -219,8 +219,8 @@
 
         // The current trigger buffer window is now behind, begin to fill the temporary buffer.
         
-        if((mTriggerSlope == POSITIVE_SLOPE && mTriggerLastValue<=mTriggerOffset && value>mTriggerOffset ||
-            mTriggerSlope == NEGATIVE_SLOPE && mTriggerLastValue>=mTriggerOffset && value<mTriggerOffset)
+        if(((mTriggerSlope == POSITIVE_SLOPE && mTriggerLastValue<=mTriggerOffset && value>mTriggerOffset) ||
+            (mTriggerSlope == NEGATIVE_SLOPE && mTriggerLastValue>=mTriggerOffset && value<mTriggerOffset))
             && mTriggerRaised == NO)
         {
             // Trigger condition raised. Begin to fill the temporary buffer.

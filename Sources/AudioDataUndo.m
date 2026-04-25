@@ -100,7 +100,7 @@
 		for(channel = 0; channel<MAX_CHANNEL; channel++) {
 			AudioDataBuffer buffer = [data dataBufferOfChannel:channel];
 			if(mUndoBuffer[channel] != nil) {
-				buffer.dataCurSize = mUndoSize[channel];
+				buffer.dataCurSize = (ULONG)mUndoSize[channel];
 				//buffer.dataBasePtr = realloc(buffer.dataBasePtr, mUndoSize[channel]);
 				memcpy(buffer.dataBasePtr, mUndoBuffer[channel], mUndoSize[channel]);
 				free(mUndoBuffer[channel]);

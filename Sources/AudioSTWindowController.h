@@ -42,7 +42,7 @@
 
 @class AudioDataUndo;
 
-@interface AudioSTWindowController : NSWindowController <AudioSTWindowControllerProtocol>
+@interface AudioSTWindowController : NSWindowController <AudioSTWindowControllerProtocol, NSWindowDelegate, NSToolbarDelegate, NSSplitViewDelegate>
 {
     IBOutlet NSSplitView *mSplitView;
     IBOutlet NSTableView *mAudioViewList;

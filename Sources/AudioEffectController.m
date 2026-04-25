@@ -173,7 +173,7 @@
 
 - (BOOL)dynamicMenuChangedForMenuItem:(NSMenuItem*)menuItem modifiersFlags:(unsigned int)flags
 {
-    int tag = [menuItem tag]-AU_TAG_OFFSET;
+    int tag = (int)[menuItem tag]-AU_TAG_OFFSET;
     if(tag>=AU_TAG_ALTERNATE_OFFSET)
         tag -= AU_TAG_ALTERNATE_OFFSET;
     else if(tag<0)
@@ -204,7 +204,7 @@
 
 - (BOOL)willPerformEffect:(NSMenuItem*)sender
 {
-	return [self willPerformEffectOnTag:[sender tag]];
+	return [self willPerformEffectOnTag:(int)[sender tag]];
 }
 
 - (BOOL)willRedoEffect
@@ -240,7 +240,7 @@
 
 - (BOOL)performEffect:(NSMenuItem*)sender onData:(id)data channel:(unsigned short)channel parentWindow:(NSWindow*)parentWindow
 {
-    return [self performEffectTag:[sender tag] onData:data channel:channel parentWindow:parentWindow];
+    return [self performEffectTag:(int)[sender tag] onData:data channel:channel parentWindow:parentWindow];
 }
 
 - (BOOL)redoLastEffectOnData:(id)data channel:(unsigned short)channel parentWindow:(NSWindow*)parentWindow

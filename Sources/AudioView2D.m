@@ -244,7 +244,7 @@
 		path[points].maxY = viewOY+deltaY*(max-mVisual_MinY);        			
     }
 
-    mPathArrayCount = points+1;
+    mPathArrayCount = (ULONG)(points+1);
 }
 
 - (void)refreshSelf

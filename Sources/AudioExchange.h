@@ -80,7 +80,7 @@
 @end
 
 @interface AudioExchange (ExportAIFF)
-+ (BOOL)canExportDataAsAIFF:(id)data;
++ (BOOL)canExportDataAsAIFF:(id<DataSourceProtocol>)data;
 + (void)exportDataAsAIFFFromView:(AudioView*)view;
 @end
 

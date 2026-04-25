@@ -281,7 +281,7 @@ OSStatus inputCallback(void     *inRefCon,
     for (c = 0; c < theNumberOfChannels; c++) 
     {
         theAudioData->mBuffers[c].mNumberChannels = 1;
-        theAudioData->mBuffers[c].mDataByteSize = theNumberOfFramesPerSlice * sizeof(Float32);
+        theAudioData->mBuffers[c].mDataByteSize = (UInt32)(theNumberOfFramesPerSlice * sizeof(Float32));
     }
     
     long slice;
@@ -292,12 +292,12 @@ OSStatus inputCallback(void     *inRefCon,
         for (c = 0; c < theNumberOfChannels; c++)
             theAudioData->mBuffers[c].mData = NULL;
 
-        AudioUnitRender (mAudioUnit, 
-                            &theActionFlags, 
-                            &theTimeStamp, 
-                            0, 
-                            theNumberOfFramesPerSlice, 
-                            theAudioData); 
+        AudioUnitRender (mAudioUnit,
+                            &theActionFlags,
+                            &theTimeStamp,
+                            0,
+                            (UInt32)theNumberOfFramesPerSlice,
+                            theAudioData);
         
         for (c = 0; c < theNumberOfChannels; c++)
         {

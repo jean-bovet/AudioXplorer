@@ -615,7 +615,7 @@
 		[mUserDefaults setObject:[popup titleOfSelectedItem] forKey:key];
 	}
 
-	[self applyDeviceDefaultsStage:stage index:[popup indexOfSelectedItem]];
+	[self applyDeviceDefaultsStage:stage index:(int)[popup indexOfSelectedItem]];
 }
 
 - (void)applyDeviceDefaults

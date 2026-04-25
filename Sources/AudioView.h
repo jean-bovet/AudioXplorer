@@ -45,7 +45,7 @@
 {
     ULONG	mViewID;	// ID of the view
     
-    SHORT mViewType;	// Type (2D, 3D, É)
+    SHORT mViewType;	// Type (2D, 3D, ï¿½)
     
     NSMutableDictionary *mFeatures;	// Features (colors, allows, etc.)
 	
@@ -59,7 +59,7 @@
     NSRect mDrawableRect;		// Drawable rect
 
     id mDelegate;			// Delegate object
-    id mDataSource;			// Data source
+    id<DataSourceProtocol> mDataSource;			// Data source
             
     FLOAT mMinX, mMaxX;			// Real world complete range for X-axis
     FLOAT mMinY, mMaxY;			// Real world complete range for Y-axis
@@ -93,7 +93,7 @@
     BOOL mPlayerIsRunning;			// Player is running ?
     
     NSPoint mOldPoint;				// Current cursor position (pixels)
-    FLOAT mPointValue;				// Valeur rŽelle courante
+    FLOAT mPointValue;				// Valeur rï¿½elle courante
     BOOL mScaleReset;
     
     NSNumberFormatter *mNumberFormatter;	// Formatter to define the rounding operation

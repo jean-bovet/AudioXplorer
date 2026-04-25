@@ -268,21 +268,17 @@
 
 - (void)updateChannel:(SHORT)channel
 {
-    ULONG maxIndex = 0;
-    ULONG minIndex = 0;
-    
     mMinY[channel] = MIN(0, [self yValueNaturalAtIndex:0 channel:channel]); // Always start at 0
     mMaxY[channel] = [self yValueNaturalAtIndex:0 channel:channel];
-        
+
     ULONG index;
     for(index=0; index<mFFT_N2; index++)
     {
         FLOAT module = [self yValueNaturalAtIndex:index channel:channel];
-        
+
         if(module<mMinY[channel])
         {
             mMinY[channel] = module;
-            minIndex = index;
         }
         if(module>mMaxY[channel])
         {
@@ -301,11 +297,10 @@
             meanM[5] = [self yValueAtIndex:index+3 channel:channel];*/
             
             mMaxY[channel] = module;
-            maxIndex = index;
-        }        
+        }
     } 
     
-    // Calcul de la frŽquence exacte
+    // Calcul de la frï¿½quence exacte
     
   /*  FLOAT s, m;
     s = maxIndex/mDeltaT*mMaxY;
@@ -435,7 +430,7 @@
         if(range<1 && range>1e-3)
             return @"mV";
         else if(range<1e-3)
-            return @"µV";
+            return @"ÂµV";
         else
             return @"V";
     } else
@@ -467,7 +462,7 @@
 
 - (ULONG)sizeOfData
 {
-    long size = 0;
+    ULONG size = 0;
     SHORT channel;
     for(channel=0; channel<MAX_CHANNEL; channel++)
     {

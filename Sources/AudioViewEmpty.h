@@ -30,10 +30,11 @@
  */
 
 #import <AppKit/AppKit.h>
+#import "AudioTypes.h"
 
 
 @interface AudioViewEmpty : NSView {
     BOOL mIsTarget;
 }
-- (unsigned long)viewID;
+- (ULONG)viewID;
 @end

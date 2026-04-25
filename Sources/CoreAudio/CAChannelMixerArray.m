@@ -80,7 +80,7 @@
 {
 	// Optimized array in the form: [c1][c2]...[cn]
 	// where ci = NONE_VALUE: no channel, ≠ NONE_VALUE: channel number
-	unsigned count = [mArray count];
+	unsigned count = (unsigned)[mArray count];
 	unsigned short* buffer = malloc(count*sizeof(unsigned short));
 	int i;
 	for(i=0; i<count; i++) {

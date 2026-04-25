@@ -44,7 +44,7 @@
         if(selection)
         {
             mPlayerheadPosition = [self xAxisSelectionRangeFrom];
-            [mAudioPlayer playData:mDataSource from:mPlayerheadPosition
+            [mAudioPlayer playData:(AudioDataAmplitude*)mDataSource from:mPlayerheadPosition
                                             to:[self xAxisSelectionRangeTo]];
         } else
         {
@@ -52,10 +52,10 @@
                 mPlayerheadPosition = mMinX;
             if(mPlayerheadPosition<mMinX)
                 mPlayerheadPosition = mMinX;
-            [mAudioPlayer playData:mDataSource from:mPlayerheadPosition];
+            [mAudioPlayer playData:(AudioDataAmplitude*)mDataSource from:mPlayerheadPosition];
         }
     } else if ([mAudioPlayer isPlaying])
-        [mAudioPlayer stopData:mDataSource];
+        [mAudioPlayer stopData:(AudioDataAmplitude*)mDataSource];
     
     return YES;
 }

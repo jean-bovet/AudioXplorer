@@ -480,7 +480,7 @@
             +mSonoBuffer.imagp[sonoIndex]*mSonoBuffer.imagp[sonoIndex]);
             
             if(imageIndex<0 || imageIndex >= mImageDataSize)
-                NSLog(@"Index problem in computeImageData (%d, max = %d)", imageIndex, mImageDataSize);
+                NSLog(@"Index problem in computeImageData (%d, max = %zu)", imageIndex, mImageDataSize);
             else
                 mImageData[imageIndex] = (unsigned char)((value*zmax)*255);
         }
@@ -558,7 +558,7 @@
             
     mImageRef = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow,
                             mImageColorSpace,
-                            kCGImageAlphaNone, mImageProvider,
+                            (CGBitmapInfo)kCGImageAlphaNone, mImageProvider,
                             NULL, NO, kCGRenderingIntentDefault);
 	
     if(mImageRef == NULL) {

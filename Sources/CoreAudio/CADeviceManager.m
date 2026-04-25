@@ -90,7 +90,7 @@ static BOOL mLogDisplay = NO;
         if(mLogDelegate)
             [mLogDelegate performSelector:@selector(deviceManagerLog:) withObject:log];
         else
-            NSLog(log);
+            NSLog(@"%@", log);
     }
 }
 

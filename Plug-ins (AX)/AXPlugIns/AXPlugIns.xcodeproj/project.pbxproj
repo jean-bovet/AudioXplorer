@@ -152,7 +152,6 @@
 				DCF2B86E0A5B902400969481 /* Resources */,
 				DCF2B8720A5B902400969481 /* Sources */,
 				DCF2B8750A5B902400969481 /* Frameworks */,
-				DCF2B8770A5B902400969481 /* Rez */,
 				AA00112200000000000000A1 /* ShellScript */,
 			);
 			buildRules = (
@@ -205,6 +204,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		AA00112200000000000000A1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -218,16 +218,6 @@
 			shellScript = "set -e\nDST=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n# Strip xattrs and codesign in one shot to beat iCloud's fileprovider race.\n# Retry a few times in case iCloud re-tags between strip and sign.\nfor i in 1 2 3 4 5 6 7 8; do\n  /usr/bin/xattr -cr \"$DST\"\n  if /usr/bin/codesign --force --sign - --timestamp=none --generate-entitlement-der --deep \"$DST\" 2>/tmp/cs.err; then\n    exit 0\n  fi\n  cat /tmp/cs.err >&2\ndone\necho \"codesign failed after retries\" >&2\nexit 1\n";
 		};
 /* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXRezBuildPhase section */
-		DCF2B8770A5B902400969481 /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXRezBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DCF2B8720A5B902400969481 /* Sources */ = {
@@ -274,6 +264,7 @@
 		A76E954C09202AE400005632 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = arm64;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +278,7 @@
 		A76E954D09202AE400005632 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = arm64;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +292,7 @@
 		A76E954E09202AE400005632 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = arm64;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -323,6 +316,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "Info-AXPlugIns.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.curvuspro.axplugins";
 				PRODUCT_NAME = ChCurvusProAXPlugIns;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -345,6 +339,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "Info-AXPlugIns.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.curvuspro.axplugins";
 				PRODUCT_NAME = ChCurvusProAXPlugIns;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -366,6 +361,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "Info-AXPlugIns.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.curvuspro.axplugins";
 				PRODUCT_NAME = ChCurvusProAXPlugIns;
 				WARNING_CFLAGS = (
 					"-Wmost",

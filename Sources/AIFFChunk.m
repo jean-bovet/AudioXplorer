@@ -61,7 +61,7 @@
     READ_BUFFER(&ckSize, *dataPtr, sizeof(long));
 	ckSize = OSSwapBigToHostInt32(ckSize);
     if(PRINT_LOG)
-        NSLog(@"Length %d", ckSize);
+        NSLog(@"Length %lu", (unsigned long)ckSize);
     
     UInt32 formType;
     READ_BUFFER(&formType, *dataPtr, sizeof(UInt32));
@@ -208,7 +208,7 @@
 
 - (void)setCkDataSize:(long)size
 {
-    mContainerChunk.ckSize = size;
+    mContainerChunk.ckSize = (SInt32)size;
 }
 
 - (void)setFormType:(UInt32)type
@@ -220,20 +220,20 @@
 {
     switch(mChunkID) {
         case FormatVersionID:
-            mFormatVersionChunk.ckSize = size;
+            mFormatVersionChunk.ckSize = (SInt32)size;
             break;
         case CommonID:
-            mCommonChunk.ckSize = size;
+            mCommonChunk.ckSize = (SInt32)size;
             break;
         case SoundDataID:
-            mSoundDataChunk.ckSize = size;
+            mSoundDataChunk.ckSize = (SInt32)size;
             break;
     }
 }
 
 - (void)setTimeStamp:(unsigned long)stamp
 {
-    mFormatVersionChunk.timestamp = stamp;
+    mFormatVersionChunk.timestamp = (UInt32)stamp;
 }
 
 - (void)setNumChannels:(short)channels
@@ -243,7 +243,7 @@
 
 - (void)setNumSampleFrames:(unsigned long)frames
 {
-    mCommonChunk.numSampleFrames = frames;
+    mCommonChunk.numSampleFrames = (UInt32)frames;
 }
 
 - (void)setSampleSize:(short)size
@@ -268,12 +268,12 @@
 
 - (void)setOffset:(unsigned long)offset
 {
-    mSoundDataChunk.offset = offset;
+    mSoundDataChunk.offset = (UInt32)offset;
 }
 
 - (void)setBlockSize:(unsigned long)size
 {
-    mSoundDataChunk.blockSize = size;
+    mSoundDataChunk.blockSize = (UInt32)size;
 }
 
 - (UInt32)chunkID
@@ -368,7 +368,7 @@
         NSLog(@"* SoundData Chunk *");
         NSLog(@"Offset %u", mSoundDataChunk.offset); 
         NSLog(@"Block size %u", mSoundDataChunk.blockSize);
-        NSLog(@"Sound data size %u", mSoundDataSize);
+        NSLog(@"Sound data size %lu", (unsigned long)mSoundDataSize);
     }
 }
 

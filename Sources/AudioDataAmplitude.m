@@ -557,7 +557,7 @@
     if(linked)
     {
         mData.data[channel].startIndex += inc;				// Adjust index
-        // Ne pas ajouter le mme incrŽment que pour stopTime -> erreur d'arrondi!
+        // Ne pas ajouter le mï¿½me incrï¿½ment que pour stopTime -> erreur d'arrondi!
         mData.data[channel].startTime = mData.data[channel].stopTime-(DOUBLE)mData.maxIndex/mData.dataRate;
     }
 
@@ -811,7 +811,7 @@
 
 - (ULONG)indexOfXValue:(FLOAT)value channel:(SHORT)channel
 {
-    // -1 pour delta puisque les index vont de 0 ˆ indexMax-1
+    // -1 pour delta puisque les index vont de 0 ï¿½ indexMax-1
     SLONG delta = (value-mData.data[CHANNEL(channel)].startTime)*mData.dataRate-1;
     SLONG index = mData.data[CHANNEL(channel)].startIndex+delta;
     if(index>=mData.maxIndex)
@@ -909,7 +909,7 @@
 - (NSString*)xAxisUnitForRange:(FLOAT)range
 {
     if(range<1e-3)
-        return @"µs";
+        return @"Âµs";
     else if(range<1)
         return @"ms";
     else
@@ -931,7 +931,7 @@
     if(range<1 && range>1e-3)
         return @"mV";
     else if(range<1e-3)
-        return @"µV";
+        return @"ÂµV";
     else
         return @"V";
 }
@@ -965,7 +965,7 @@
 
 - (ULONG)sizeOfData
 {
-    long size = 0;
+    ULONG size = 0;
     SHORT channel;
     for(channel=0; channel<MAX_CHANNEL; channel++)
     {

@@ -88,7 +88,7 @@
 
 - (void)setError:(long)error
 {
-    mError = error;
+    mError = (ULONG)error;
 }
 
 - (void)setCancelled:(BOOL)flag

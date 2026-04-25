@@ -123,7 +123,7 @@
     OSStatus theStatus = noErr;
     UInt32 theSize;
 
-    AudioStreamBasicDescription format;
+    AudioStreamBasicDescription format = {0};
 
     theStatus = AudioStreamGetPropertyInfo(streamID, 0, kAudioDevicePropertyStreamFormat,  &theSize, NULL);
     if(theStatus!=noErr)
@@ -161,7 +161,7 @@
 
     NSString *rate = [numberFormatter stringForObjectValue:[NSNumber numberWithFloat:descr.mSampleRate]];
 
-    return [NSString stringWithFormat:NSLocalizedString(@"%@ - %@ Hz - %hi bits/channel", NULL), [self stringWithOSType:descr.mFormatID], rate, descr.mBitsPerChannel];
+    return [NSString stringWithFormat:NSLocalizedString(@"%@ - %@ Hz - %u bits/channel", NULL), [self stringWithOSType:descr.mFormatID], rate, (unsigned int)descr.mBitsPerChannel];
 }
 
 - (int)indexOfBestMatchedFormatForRate:(float)rate bits:(int)bits channels:(int)channels

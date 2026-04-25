@@ -146,7 +146,7 @@
 - (void)inspectorPopUpAction:(id)sender
 {
     if(mValidTarget)
-        [self displayViewAtIndex:[sender tag]];
+        [self displayViewAtIndex:(int)[sender tag]];
 }
 
 - (void)displayViewAtIndex:(int)index

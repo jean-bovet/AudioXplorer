@@ -160,7 +160,7 @@
 
 - (ULONG)viewID
 {
-    return [[mFeatures objectForKey:ViewIDKey] unsignedLongValue];
+    return (ULONG)[[mFeatures objectForKey:ViewIDKey] unsignedLongValue];
 }
 
 - (void)setXAxisUnit:(NSString*)unit
@@ -359,8 +359,8 @@
 
 - (void)setDisplayedChannel:(SHORT)channel
 {
-    BOOL refreshRanges = (channel == LISSAJOUS_CHANNEL) && [self displayedChannel] != LISSAJOUS_CHANNEL
-                    || (channel != LISSAJOUS_CHANNEL) && [self displayedChannel] == LISSAJOUS_CHANNEL;
+    BOOL refreshRanges = ((channel == LISSAJOUS_CHANNEL) && [self displayedChannel] != LISSAJOUS_CHANNEL)
+                    || ((channel != LISSAJOUS_CHANNEL) && [self displayedChannel] == LISSAJOUS_CHANNEL);
                         
     [mFeatures setObject:[NSNumber numberWithInt:channel] forKey:DisplayedChannelKey];
 	mDisplayedChannel = channel;

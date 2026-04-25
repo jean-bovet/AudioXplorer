@@ -90,9 +90,9 @@
     
     while(index<[v length])
     {
-        if([v characterAtIndex:index] == [[NSString stringWithString:@"."] characterAtIndex:0])
+        if([v characterAtIndex:index] == [@"." characterAtIndex:0])
             remove = YES;
-        else if([v characterAtIndex:index] == [[NSString stringWithString:@"e"] characterAtIndex:0])
+        else if([v characterAtIndex:index] == [@"e" characterAtIndex:0])
             remove = NO;
             
         if(remove)

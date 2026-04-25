@@ -82,4 +82,9 @@
 - (BOOL)supportRawDataExport;
 - (NSString*)stringOfRawDataFromIndex:(ULONG)from to:(ULONG)to channel:(USHORT)channel delimiter:(NSString*)delimiter;
 
+@optional
+- (SHORT)xAxisScale;
+- (FLOAT)triggerOffset;
+- (void)setTriggerOffset:(FLOAT)offset;
+
 @end

@@ -35,7 +35,7 @@
 #import "CAChannelMixer.h"
 #import "AudioViewAppearanceController.h"
 
-@interface AudioDialogPrefs : NSWindowController {
+@interface AudioDialogPrefs : NSWindowController <NSToolbarDelegate> {
 
     NSUserDefaults *mUserDefaults;
     

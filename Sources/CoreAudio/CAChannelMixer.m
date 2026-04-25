@@ -217,7 +217,7 @@
 - (void)removeTableView:(NSTableView*)tv
 {
 	if([mTableViewArray containsObject:tv]) {
-		if([tv delegate] == self)
+		if((id)[tv delegate] == self)
 			[tv setDelegate:NULL];
 		[mTableViewArray removeObject:tv];		
 	}

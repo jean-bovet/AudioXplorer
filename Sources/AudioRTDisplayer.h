@@ -101,7 +101,6 @@
 - (AudioView*)sonoView;
 
 - (AudioDataSono*)sonoData;
-- (AudioRecorder*)audioRecorder;
 
 - (void)applyLayout;
 

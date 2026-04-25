@@ -39,7 +39,7 @@
 - (void)handleMouseInDrawableRect:(NSEvent*)event first:(BOOL)first
 {
     NSPoint p = [self convertPoint:[event locationInWindow] fromView:nil];
-    unsigned int flags = [event modifierFlags];
+    unsigned int flags = (unsigned int)[event modifierFlags];
     FLOAT cursorX = [self computeXRealValueFromXPixel:p.x]; 
 
     if(flags & NSShiftKeyMask)
@@ -246,8 +246,8 @@
         FLOAT px = [self computeXRealValueFromXPixel:p.x];
             
         if(sign(px) == sign(mPointValue)
-            && (sign(mPointValue) == 1 && px>1e-6
-            || sign(mPointValue) == -1 && px<-1e-6))
+            && ((sign(mPointValue) == 1 && px>1e-6)
+            || (sign(mPointValue) == -1 && px<-1e-6)))
         {             
             if(mScaleReset)
             {
@@ -290,8 +290,8 @@
         FLOAT py = [self computeYRealValueFromYPixel:p.y];
             
         if(sign(py) == sign(mPointValue)
-            && (sign(mPointValue) == 1 && py>1e-6
-            || sign(mPointValue) == -1 && py<-1e-6))
+            && ((sign(mPointValue) == 1 && py>1e-6)
+            || (sign(mPointValue) == -1 && py<-1e-6)))
         {             
             if(mScaleReset)
             {
@@ -324,7 +324,7 @@
 - (void)handleMouseInXAxisRect:(NSEvent*)event first:(BOOL)first
 {
     NSPoint p = [self convertPoint:[event locationInWindow] fromView:nil];
-    unsigned int flags = [event modifierFlags];
+    unsigned int flags = (unsigned int)[event modifierFlags];
 
     if(first)
     {
@@ -341,7 +341,7 @@
 - (void)handleMouseInYAxisRect:(NSEvent*)event first:(BOOL)first
 {
     NSPoint p = [self convertPoint:[event locationInWindow] fromView:nil];
-    unsigned int flags = [event modifierFlags];
+    unsigned int flags = (unsigned int)[event modifierFlags];
 
     if(first)
     {
@@ -492,7 +492,7 @@
 - (BOOL)performKeyEquivalent:(NSEvent *)event
 {
 	NSString *chars = [event charactersIgnoringModifiers];
-    unsigned int flags = [event modifierFlags];
+    unsigned int flags = (unsigned int)[event modifierFlags];
 
 	if((flags & NSCommandKeyMask) == 0)
 		return NO;
@@ -507,7 +507,7 @@
 - (void)keyDown:(NSEvent*)event
 {
     NSString *chars = [event charactersIgnoringModifiers];
-    unsigned int flags = [event modifierFlags];
+    unsigned int flags = (unsigned int)[event modifierFlags];
     unsigned int c = [chars characterAtIndex:0];
     
     FLOAT incr = 0;

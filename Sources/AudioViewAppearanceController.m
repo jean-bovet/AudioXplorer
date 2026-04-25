@@ -284,7 +284,7 @@
 - (void)colorHasChanged:(id)sender
 {
     NSColor *color = [sender color];
-    int row = [mAppearanceTableView selectedRow];
+    int row = (int)[mAppearanceTableView selectedRow];
     [[mAppearanceColorCellDictionary objectForKey:[NSString stringWithFormat:@"%d", row]] setObjectValue:color];
     [mAppearanceTableView setNeedsDisplay:YES];
 
@@ -404,7 +404,7 @@
 
 - (int)numberOfRowsInTableView:(NSTableView *)theTableView
 {
-    return [mLabelKeyArray count];
+    return (int)[mLabelKeyArray count];
 }
 
 - (NSMutableDictionary*)dictionaryForColumnIdentifier:(NSString*)identifier
