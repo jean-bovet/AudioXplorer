@@ -1322,7 +1322,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nDST=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n# Strip xattrs and codesign in one shot to beat iCloud's fileprovider race.\n# Retry a few times in case iCloud re-tags between strip and sign.\nENT_FLAG=\"\"\nif [ -f \"${CODE_SIGN_ENTITLEMENTS}\" ]; then\n  ENT_FLAG=\"--entitlements ${CODE_SIGN_ENTITLEMENTS}\"\nfi\nfor i in 1 2 3 4 5 6 7 8; do\n  /usr/bin/xattr -cr \"$DST\"\n  if /usr/bin/codesign --force --sign - --timestamp=none --generate-entitlement-der --deep $ENT_FLAG \"$DST\" 2>/tmp/cs.err; then\n    exit 0\n  fi\n  cat /tmp/cs.err >&2\ndone\necho \"codesign failed after retries\" >&2\nexit 1\n";
+			shellScript = "set -e\nDST=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n# Strip xattrs and codesign in one shot to beat iCloud's fileprovider race.\n# Retry a few times in case iCloud re-tags between strip and sign.\n# Sign with a stable identity so TCC (microphone, etc.) remembers grants across rebuilds.\nSIGN_ID=\"Developer ID Application: Jean Bovet (REDACTED-TEAM-ID)\"\nENT_FLAG=\"\"\nif [ -f \"${CODE_SIGN_ENTITLEMENTS}\" ]; then\n  ENT_FLAG=\"--entitlements ${CODE_SIGN_ENTITLEMENTS}\"\nfi\nfor i in 1 2 3 4 5 6 7 8; do\n  /usr/bin/xattr -cr \"$DST\"\n  if /usr/bin/codesign --force --sign \"$SIGN_ID\" --timestamp=none --generate-entitlement-der --deep $ENT_FLAG \"$DST\" 2>/tmp/cs.err; then\n    exit 0\n  fi\n  cat /tmp/cs.err >&2\ndone\necho \"codesign failed after retries\" >&2\nexit 1\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1714,7 +1714,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application: Jean Bovet (REDACTED-TEAM-ID)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = REDACTED-TEAM-ID;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1742,7 +1742,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application: Jean Bovet (REDACTED-TEAM-ID)";
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = REDACTED-TEAM-ID;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1768,7 +1768,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application: Jean Bovet (REDACTED-TEAM-ID)";
 				DEVELOPMENT_TEAM = REDACTED-TEAM-ID;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
