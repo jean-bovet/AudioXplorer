@@ -4,6 +4,8 @@ AudioXplorer is a macOS sound‑analysis application originally developed by [Ar
 
 The 2009 source tree (version 1.3.2 — Snow Leopard fix release) was modernized in 2026 to build on current Xcode and run as a notarized arm64 binary on macOS 12 and later. The application is freeware under a BSD license (relicensed in 2006).
 
+![Real-time analysis window showing waveform, spectrum and sonogram views](docs/images/realtime.jpg)
+
 ## Download
 
 Latest release: [AudioXplorer 1.4](https://github.com/jean-bovet/AudioXplorer/releases/latest) — signed and notarized DMG. Future updates are delivered in‑app via Sparkle.
