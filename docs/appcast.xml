@@ -3,6 +3,18 @@
     <channel>
         <title>AudioXplorer</title>
         <item>
+            <title>1.4.1</title>
+            <pubDate>Sun, 26 Apr 2026 18:22:00 -0700</pubDate>
+            <sparkle:version>128</sparkle:version>
+            <sparkle:shortVersionString>1.4.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/jean-bovet/AudioXplorer/releases/download/v1.4.1/AudioXplorer-1.4.1.dmg" length="1487089" type="application/octet-stream" sparkle:edSignature="MqcykQdKZtpZTQYf/RtDdod48DfshyUfiJuMuWVpqBTtgFhTG7bB20UKZF/zafX6bdC4Ye4Neyb4+Mm6udeQCg=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/jean-bovet/AudioXplorer/releases/download/v1.4.1/AudioXplorer128-127.delta" sparkle:deltaFrom="127" length="20202" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="5t9nVBYTGni38/8fXDFBwUQWkgZK/N/Xbgi55q2k0jNNAxJ2j2j3HaBpS2y9t0kvuYic8ZCr72hp7DFwfabMAg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.4</title>
             <pubDate>Sat, 25 Apr 2026 06:34:19 -0700</pubDate>
             <sparkle:version>127</sparkle:version>
