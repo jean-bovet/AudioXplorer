@@ -31,6 +31,7 @@
  */
 
 #import "AudioApp.h"
+#import <AVFoundation/AVFoundation.h>
 #import "AudioDocument.h"
 #import "AudioInspectorController.h"
 #import "AudioRTWindowController.h"
@@ -105,6 +106,14 @@ static NSMutableArray *_staticObjectArray = NULL;
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
+    // Trigger the TCC microphone prompt. The CoreAudio HAL capture path used
+    // by the recorder does not reliably register with TCC on its own, so the
+    // OS never asks for permission and IOProcs deliver silence.
+    if (@available(macOS 10.14, *)) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio
+                                 completionHandler:^(BOOL granted) { (void)granted; }];
+    }
+
     // Open the loading panel
     [self loadingPanelOpen];
 

@@ -238,6 +238,7 @@
 		A7CB0D28071CEE3B00FE693E /* tb_update.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7CB0D22071CEE3B00FE693E /* tb_update.tiff */; };
 		A7CB0D60071CF0A200FE693E /* tb_effects.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A7CB0D5F071CF0A200FE693E /* tb_effects.tiff */; };
 		AA00000000000000000000A1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A2 /* AudioToolbox.framework */; };
+		AA00000000000000000000B1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000B2 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -500,6 +501,7 @@
 		A7F058DC03FD4A7B00FEC91A /* AudioUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioUtilities.m; path = Sources/AudioUtilities.m; sourceTree = "<group>"; };
 		A7FD572F0412224C005326DA /* Document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Document.icns; path = Images/Document.icns; sourceTree = "<group>"; };
 		AA00000000000000000000A2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		AA00000000000000000000B2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = /System/Library/Frameworks/AVFoundation.framework; sourceTree = "<absolute>"; };
 		DCF2B6FC0A5B5ACD00969481 /* AXPlugIns.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AXPlugIns.xcodeproj; path = "Plug-ins (AX)/AXPlugIns/AXPlugIns.xcodeproj"; sourceTree = "<group>"; };
 		F531041B03C9E551017CFB76 /* AudioDataWrapper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AudioDataWrapper.h; path = Sources/AudioDataWrapper.h; sourceTree = "<group>"; };
 		F531041C03C9E551017CFB76 /* AudioDataWrapper.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AudioDataWrapper.m; path = Sources/AudioDataWrapper.m; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 				A7C6E3BF05E1171A0059284A /* Accelerate.framework in Frameworks */,
 				A7C6E3C005E1171A0059284A /* CoreAudio.framework in Frameworks */,
 				AA00000000000000000000A1 /* AudioToolbox.framework in Frameworks */,
+				AA00000000000000000000B1 /* AVFoundation.framework in Frameworks */,
 				A7C6E3C105E1171A0059284A /* AudioUnit.framework in Frameworks */,
 				A7C6E3C205E1171A0059284A /* Carbon.framework in Frameworks */,
 				A7C6E3C305E1171A0059284A /* SystemConfiguration.framework in Frameworks */,
@@ -571,6 +574,7 @@
 				F58F626F035E91EE018C2097 /* Accelerate.framework */,
 				F549DAC003B8AABA015325D8 /* CoreAudio.framework */,
 				AA00000000000000000000A2 /* AudioToolbox.framework */,
+				AA00000000000000000000B2 /* AVFoundation.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";

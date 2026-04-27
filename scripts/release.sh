@@ -53,6 +53,7 @@ fi
 
 echo "==> Signing app with hardened runtime"
 codesign --force --deep --options runtime --timestamp \
+    --entitlements "$PROJECT_DIR/AudioXplorer.entitlements" \
     --sign "$SIGN_IDENTITY" "$APP_PATH"
 codesign --verify --deep --strict --verbose=2 "$APP_PATH"
 
