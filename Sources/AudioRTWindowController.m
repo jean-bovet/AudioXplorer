@@ -208,8 +208,7 @@
     unsigned char c_ = [c characterAtIndex:0];
 	
     switch(c_) {
-        case 32:            
-            [mEnableButton setIntValue:![mEnableButton state]];
+        case 32:
             [self enableAction:mEnableButton];
             break;
         case '1':
@@ -237,10 +236,10 @@
 
 - (IBAction)enableAction:(id)sender
 {
-   if([sender state] == NSOnState)
-        [mAudioRTDisplayer resumeMonitoring];
-    else
+    if ([mAudioRTDisplayer monitoring])
         [mAudioRTDisplayer pauseMonitoring];
+    else
+        [mAudioRTDisplayer resumeMonitoring];
 }
 
 - (IBAction)playthruAction:(id)sender
@@ -307,8 +306,8 @@
 
 - (void)audioRTMonitoringStatusChanged:(NSNotification*)notification
 {
-    if([notification object] == mAudioRTDisplayer)
-        [mEnableButton setIntValue:[[notification object] monitoring]];
+    if ([notification object] == mAudioRTDisplayer)
+        [mEnableButton setState:[[notification object] monitoring] ? NSControlStateValueOn : NSControlStateValueOff];
 }
 
 - (AudioRTDisplayer*)audioRTDisplayer

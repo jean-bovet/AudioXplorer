@@ -393,7 +393,7 @@
 
 - (SHORT)statusFlag
 {
-    BOOL status;
+    SHORT status;
     [mLock lock];
     status = mStatusFlag;
     [mLock unlock];
