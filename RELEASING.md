@@ -25,7 +25,9 @@ You'll need:
 
 1. **Bump the version** in `Info.plist`: increment `CFBundleShortVersionString` (e.g. `1.4` → `1.5`) and `CFBundleVersion` (e.g. `127` → `128`).
 
-2. **Run the release script.** Set `SIGN_ID` to the full identity string if you have multiple Developer ID certs:
+2. **Write release notes** at `docs/releasenotes/<CFBundleShortVersionString>.md` (Markdown). The release script copies this file alongside the DMG so `generate_appcast` embeds it as the appcast item's `<description>`, which is what Sparkle's update prompt displays. If the file is missing, the script warns and produces an item with no description.
+
+3. **Run the release script.** Set `SIGN_ID` to the full identity string if you have multiple Developer ID certs:
    ```bash
    SIGN_ID="Developer ID Application: Your Name (TEAMID)" ./scripts/release.sh
    ```
@@ -40,21 +42,21 @@ You'll need:
 
    For a quick packaging-only test (no notarization round-trip), use `SKIP_NOTARIZE=1`.
 
-3. **Sanity-check the artifacts.**
+4. **Sanity-check the artifacts.**
    ```bash
    open dist/AudioXplorer-X.Y.dmg              # visual layout check
    git diff docs/appcast.xml                    # confirm new <item> for X.Y, EdDSA signature populated
    ```
 
-4. **Commit, tag, push.**
+5. **Commit, tag, push.**
    ```bash
-   git add Info.plist docs/appcast.xml
+   git add Info.plist docs/appcast.xml docs/releasenotes/X.Y.md
    git commit -m "Release X.Y"
    git tag -a vX.Y -m "AudioXplorer X.Y"
    git push origin main --tags
    ```
 
-5. **Create the GitHub Release.** The appcast's enclosure URL points at `https://github.com/jean-bovet/AudioXplorer/releases/download/vX.Y/AudioXplorer-X.Y.dmg`, so the asset filename and tag name must match:
+6. **Create the GitHub Release.** The appcast's enclosure URL points at `https://github.com/jean-bovet/AudioXplorer/releases/download/vX.Y/AudioXplorer-X.Y.dmg`, so the asset filename and tag name must match:
    ```bash
    gh release create vX.Y dist/AudioXplorer-X.Y.dmg \
        --title "AudioXplorer X.Y" \

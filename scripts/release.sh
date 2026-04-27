@@ -93,6 +93,13 @@ spctl --assess --type open --context context:primary-signature --verbose "$DMG_P
 
 GENERATE_APPCAST="$PROJECT_DIR/scripts/sparkle/generate_appcast"
 DOCS_DIR="$PROJECT_DIR/docs"
+RELNOTES_SRC="$DOCS_DIR/releasenotes/$VERSION.md"
+if [[ -f "$RELNOTES_SRC" ]]; then
+    cp "$RELNOTES_SRC" "$DIST_DIR/$APP_NAME-$VERSION.md"
+    echo "==> Including release notes from $RELNOTES_SRC"
+else
+    echo "warning: no release notes at $RELNOTES_SRC; appcast item will have no description" >&2
+fi
 if [[ -x "$GENERATE_APPCAST" ]]; then
     echo "==> Generating appcast"
     mkdir -p "$DOCS_DIR"
