@@ -106,12 +106,17 @@ static NSMutableArray *_staticObjectArray = NULL;
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
-    // Trigger the TCC microphone prompt. The CoreAudio HAL capture path used
-    // by the recorder does not reliably register with TCC on its own, so the
-    // OS never asks for permission and IOProcs deliver silence.
+    // Trigger the TCC microphone prompt only when status is undetermined.
+    // The CoreAudio HAL capture path used by the recorder doesn't register
+    // with TCC on its own, so without this call the OS never asks and the
+    // IOProcs deliver silence. Calling requestAccess unconditionally re-shows
+    // the prompt on every launch even when already granted, so guard on the
+    // current status.
     if (@available(macOS 10.14, *)) {
-        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio
-                                 completionHandler:^(BOOL granted) { (void)granted; }];
+        if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio] == AVAuthorizationStatusNotDetermined) {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio
+                                     completionHandler:^(BOOL granted) { (void)granted; }];
+        }
     }
 
     // Open the loading panel

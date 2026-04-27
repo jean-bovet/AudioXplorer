@@ -105,6 +105,7 @@ if [[ -x "$GENERATE_APPCAST" ]]; then
     mkdir -p "$DOCS_DIR"
     "$GENERATE_APPCAST" "$DIST_DIR" \
         --download-url-prefix "https://github.com/jean-bovet/AudioXplorer/releases/download/v$VERSION/" \
+        --embed-release-notes \
         -o "$DOCS_DIR/appcast.xml"
     echo "Appcast written to $DOCS_DIR/appcast.xml"
     echo "Commit and push docs/appcast.xml after the GitHub release is published."

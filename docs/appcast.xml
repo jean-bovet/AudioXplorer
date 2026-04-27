@@ -4,8 +4,8 @@
         <title>AudioXplorer</title>
         <item>
             <title>1.4.1</title>
-            <pubDate>Sun, 26 Apr 2026 18:22:00 -0700</pubDate>
-            <sparkle:version>128</sparkle:version>
+            <pubDate>Sun, 26 Apr 2026 18:32:36 -0700</pubDate>
+            <sparkle:version>129</sparkle:version>
             <sparkle:shortVersionString>1.4.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
@@ -15,12 +15,13 @@
                 <ul>
                     <li><b>Real-time capture now works in the installed app.</b> The 1.4 release build was signed without the <code>com.apple.security.device.audio-input</code> entitlement, so macOS silently refused to prompt for microphone access — the real-time window opened but recorded silence.</li>
                     <li><b>Enable toggle in the real-time window no longer gets stuck on.</b> A type-truncation bug made <code>isRecording</code> always report <code>YES</code> after pause, so the toggle kept flipping itself back to ON.</li>
+                    <li><b>Microphone permission is no longer re-requested on every launch.</b> The launch-time TCC trigger now runs only when authorization status is undetermined, instead of every time.</li>
                 </ul>
                 <p><i>If you previously installed 1.4 and granted microphone access, you may need to remove and re-add AudioXplorer in System Settings → Privacy &amp; Security → Microphone — the new build's signature differs from 1.4's.</i></p>
             ]]></description>
-            <enclosure url="https://github.com/jean-bovet/AudioXplorer/releases/download/v1.4.1/AudioXplorer-1.4.1.dmg" length="1487089" type="application/octet-stream" sparkle:edSignature="MqcykQdKZtpZTQYf/RtDdod48DfshyUfiJuMuWVpqBTtgFhTG7bB20UKZF/zafX6bdC4Ye4Neyb4+Mm6udeQCg=="/>
+            <enclosure url="https://github.com/jean-bovet/AudioXplorer/releases/download/v1.4.1/AudioXplorer-1.4.1.dmg" length="1487062" type="application/octet-stream" sparkle:edSignature="y20DmF54t2PHKhHO7w7BHmiI8Q/3E31rRjQejOdZKVocBnsgfwElf6wlqgH91PwnOaXPBNxHBa8ORtf7dTv6AA=="/>
             <sparkle:deltas>
-                <enclosure url="https://github.com/jean-bovet/AudioXplorer/releases/download/v1.4.1/AudioXplorer128-127.delta" sparkle:deltaFrom="127" length="20202" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="5t9nVBYTGni38/8fXDFBwUQWkgZK/N/Xbgi55q2k0jNNAxJ2j2j3HaBpS2y9t0kvuYic8ZCr72hp7DFwfabMAg=="/>
+                <enclosure url="https://github.com/jean-bovet/AudioXplorer/releases/download/v1.4.1/AudioXplorer129-127.delta" sparkle:deltaFrom="127" length="25614" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="nQX8oT/hTKeWXe4E2oq8EddtWC+C5HnSHAKlLpJjSavZuihI/UKiU8rneyUY7jkBNaa9S+EAfrzEUDrP2GY9DA=="/>
             </sparkle:deltas>
         </item>
         <item>
