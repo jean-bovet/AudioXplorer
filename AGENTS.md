@@ -1,4 +1,4 @@
-# Notes for Claude
+# Notes for coding agents
 
 This is a public open-source repository.
 
