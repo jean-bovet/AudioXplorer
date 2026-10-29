@@ -91,7 +91,12 @@ xcrun stapler staple "$DMG_PATH"
 xcrun stapler validate "$DMG_PATH"
 spctl --assess --type open --context context:primary-signature --verbose "$DMG_PATH" || true
 
-GENERATE_APPCAST="$PROJECT_DIR/scripts/sparkle/generate_appcast"
+SPARKLE_DIR="$PROJECT_DIR/scripts/sparkle"
+# One fixed copy of these tools, when a `sparkle-tools` helper is on PATH: the keychain's "Always Allow" for the
+# Sparkle signing key binds to the program's identity, and these tools are only ad-hoc signed, so every fresh copy
+# would ask again. Without the helper, the vendored folder is used as is.
+if command -v sparkle-tools > /dev/null; then SPARKLE_DIR="$(sparkle-tools "$SPARKLE_DIR")"; fi
+GENERATE_APPCAST="$SPARKLE_DIR/generate_appcast"
 DOCS_DIR="$PROJECT_DIR/docs"
 RELNOTES_SRC="$DOCS_DIR/releasenotes/$VERSION.md"
 if [[ -f "$RELNOTES_SRC" ]]; then
