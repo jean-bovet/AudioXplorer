@@ -17,3 +17,5 @@ xcuserdata/
 # Misc
 *.swp
 .claude/worktrees/
+
+*.local.xcconfig
