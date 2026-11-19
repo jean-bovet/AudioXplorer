@@ -2,6 +2,14 @@
 
 This is a public open-source repository.
 
+## Layout
+
+- `Sources/`, `ARFramework/`, `Plug-ins (AX)/`, `main.m` — the app (Objective-C); `*.lproj/` — localizations.
+- `docs/` — the GitHub Pages site: `appcast.xml` (Sparkle feed) and `releasenotes/`.
+- `scripts/release.sh`, `scripts/sparkle/` — release tooling; `RELEASING.md` — the release how-to.
+
+## Conventions
+
 When making changes here, **do not commit any private or sensitive information**, including but not limited to:
 
 - Personal email addresses, real names of third parties, or contact details
@@ -18,4 +26,9 @@ Public-by-design items that are okay to keep:
 
 If you find any of the above slipped into the working tree, flag it before committing. If something already landed in git history, prefer `git filter-repo --replace-text` over committing a redaction on top, since the original blob remains reachable until objects are pruned.
 
-Release tooling lives in `scripts/release.sh` and `scripts/sparkle/`. The release script reads `SIGN_ID` and `NOTARY_PROFILE` from the environment so the developer's identity never has to be hard-coded. Keep it that way.
+The old arizona-software.ch inside the app's in-app text, Help and credits is accepted legacy (the app is not
+shipping); audits leave it. New text and URLs use jean-bovet.ch.
+
+## Release
+
+`scripts/release.sh` (steps in `RELEASING.md`). The release script reads `SIGN_ID` and `NOTARY_PROFILE` from the environment so the developer's identity never has to be hard-coded. Keep it that way.
