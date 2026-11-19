@@ -16,3 +16,4 @@ xcuserdata/
 
 # Misc
 *.swp
+.claude/worktrees/

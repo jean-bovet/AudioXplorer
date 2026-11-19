@@ -38,7 +38,10 @@ DMG_NAME="$APP_NAME-$VERSION.dmg"
 DMG_PATH="$DIST_DIR/$DMG_NAME"
 
 echo "==> Building $APP_NAME $VERSION ($CONFIG)"
-xcodebuild \
+# Under buildlock when it is on PATH: one build per DerivedData folder, within the host's build slots.
+LOCK=()
+command -v buildlock > /dev/null && LOCK=(buildlock --folder "$BUILD_DIR/DerivedData" --)
+${LOCK[@]+"${LOCK[@]}"} xcodebuild \
     -project "$APP_NAME.xcodeproj" \
     -scheme "$SCHEME" \
     -configuration "$CONFIG" \
